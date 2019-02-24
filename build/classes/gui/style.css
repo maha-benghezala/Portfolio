@@ -1,0 +1,38 @@
+#pane{
+        -fx-background-image: url("../gui/cv_background.jpg");
+        -fx-background-repeat: stretch;   
+        -fx-background-size: 1366 768;
+        -fx-background-position: center center;
+        -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    }
+#panel{
+        -fx-background-image: url("../Ressources/Images/banner1.jpg");
+        -fx-background-repeat: stretch;   
+        -fx-background-size: 1920 625;
+        -fx-background-position: center center;
+        -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    }
+#anchor{
+        -fx-background-image: url("../Ressources/Images/banner1.jpg");
+        -fx-background-repeat: stretch;   
+        -fx-background-size: 1366 768;
+        -fx-background-position: center center;
+        -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    }
+#paneeel{
+        -fx-background-image: url("../Ressources/Images/banner1.jpg");
+        -fx-background-repeat: stretch;   
+        -fx-background-size: 1366 768;
+        -fx-background-position: center center;
+        -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    }
+#pane2{
+        -fx-background-image: url("../Ressources/Images/bg-footer.jpg");
+        -fx-background-repeat: stretch;   
+        -fx-background-size: 1366 768;
+        -fx-background-position: center center;
+        -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    }
+
+
+

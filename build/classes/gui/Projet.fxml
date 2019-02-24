@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProjetController">
+   <children>
+      <JFXTextField fx:id="nomprojet" layoutX="21.0" layoutY="43.0" prefHeight="36.0" prefWidth="559.0" promptText="Nom projet" />
+      <JFXTextField fx:id="url" layoutX="21.0" layoutY="356.0" prefHeight="36.0" prefWidth="559.0" promptText="URL du projet" />
+      <JFXCheckBox fx:id="check" layoutX="21.0" layoutY="106.0" onAction="#checkprojet" prefHeight="29.0" prefWidth="251.0" text="Je travaille actuellement sur ce projet">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXComboBox fx:id="moisd" layoutX="28.0" layoutY="190.0" prefHeight="29.0" prefWidth="234.0" promptText="Mois début" />
+      <JFXComboBox fx:id="moisf" layoutX="346.0" layoutY="196.0" prefHeight="29.0" prefWidth="234.0" promptText="Mois fin" />
+      <JFXComboBox fx:id="anneed" layoutX="28.0" layoutY="260.0" prefHeight="29.0" prefWidth="234.0" promptText="Année debut" />
+      <JFXComboBox fx:id="anneef" layoutX="346.0" layoutY="260.0" prefHeight="29.0" prefWidth="234.0" promptText="Année fin" />
+      <JFXTextArea fx:id="description" layoutX="21.0" layoutY="422.0" prefHeight="105.0" prefWidth="559.0" promptText="Description" />
+      <JFXButton fx:id="enregistrer" layoutX="346.0" layoutY="549.0" onAction="#EnregistrerProjet" prefHeight="29.0" prefWidth="234.0" text="Enregistrer">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="21.0" layoutY="549.0" onAction="#Annuler" prefHeight="29.0" prefWidth="234.0" text="Annuler">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
