@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Maha/Documents/NetBeansProjects/Portfolio/src/gui/ModifierCertificatController.java</file>
-            <file>file:/C:/Users/Maha/Documents/NetBeansProjects/Portfolio/src/gui/CertificatController.java</file>
-            <file>file:/C:/Users/Maha/Documents/NetBeansProjects/Portfolio/src/gui/ModifierCertificat.fxml</file>
-            <file>file:/C:/Users/Maha/Documents/NetBeansProjects/Portfolio/src/service/CertificationService.java</file>
-            <file>file:/C:/Users/Maha/Documents/NetBeansProjects/Portfolio/src/gui/CréeCvController.java</file>
+            <file>file:/C:/Users/Maha/Desktop/Portfolio/src/gui/CréeCvController.java</file>
+            <file>file:/C:/Users/Maha/Desktop/Portfolio/src/gui/ProfilUserController.java</file>
+            <file>file:/C:/Users/Maha/Desktop/Portfolio/src/test/Test.java</file>
+            <file>file:/C:/Users/Maha/Desktop/Portfolio/src/gui/ContactUserController.java</file>
         </group>
     </open-files>
 </project-private>

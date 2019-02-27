@@ -35,6 +35,8 @@ public class ModifierCompetenceController implements Initializable {
     @FXML
     private JFXButton AjouterCompetence;
     public static int id;
+    @FXML
+    private JFXButton annuler;
     /**
      * Initializes the controller class.
      */
@@ -50,17 +52,26 @@ public class ModifierCompetenceController implements Initializable {
 
     @FXML
     private void OnAddCompetence(ActionEvent event) {
-             CompetenceService cs = new   CompetenceService();
-//        if (!competencetxt.getText().isEmpty()) {
-//            System.out.println("remplir le nom de competence!");}
-//        else
-//        { 
+       CompetenceService cs = new   CompetenceService();
+        if (!competencetxt.getText().isEmpty()) {
+         
+
             Competence c=cs.get(id);
            c.setCompetence(competencetxt.getText());
            c.setId_user(1);
           cs.modiferCompetence(c);
+        }else{
+               System.out.println("remplir le nom de competence!");
+        }
            
         }
+
+    @FXML
+    private void Annuler(ActionEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+           stage.close();
+    }
     }
     
 

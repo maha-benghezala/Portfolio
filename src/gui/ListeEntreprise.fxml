@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,28 +12,28 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListeEntrepriseController">
    <children>
-      <VBox layoutX="1.0" prefHeight="500.0" prefWidth="171.0">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton prefHeight="50.0" prefWidth="200.0" text="Crée Cv " />
-            <JFXButton layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0" text="Liste Entreprise" />
-            <JFXButton layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="200.0" text="Offre" />
-            <JFXButton layoutX="10.0" layoutY="260.0" prefHeight="50.0" prefWidth="200.0" text="Recrutement" />
-            <JFXButton layoutX="10.0" layoutY="310.0" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
-         </children>
-      </VBox>
-      <JFXListView fx:id="listeEntreprise" layoutX="201.0" layoutY="5.0" prefHeight="491.0" prefWidth="354.0" />
-      <Line endX="-94.0" endY="430.5" layoutX="286.0" layoutY="67.0" startX="-94.0" startY="-67.0" />
-      <Pane fx:id="pane" layoutX="582.0" layoutY="17.0" prefHeight="477.0" prefWidth="414.0">
+      <JFXListView fx:id="listeEntreprise" layoutX="216.0" layoutY="5.0" prefHeight="491.0" prefWidth="354.0" />
+      <Line endX="-94.0" endY="430.5" layoutX="301.0" layoutY="58.0" startX="-94.0" startY="-67.0" />
+      <Pane fx:id="pane" layoutX="586.0" layoutY="12.0" prefHeight="477.0" prefWidth="414.0">
          <children>
             <Label fx:id="NomSc" layoutX="30.0" layoutY="22.0" prefHeight="35.0" prefWidth="216.0" style="-fx-background-color: #A52A2A;" />
             <Label fx:id="adresse" layoutX="30.0" layoutY="142.0" prefHeight="35.0" prefWidth="354.0" style="-fx-background-color: #A52A2A;" />
             <Label fx:id="specialite" layoutX="30.0" layoutY="83.0" prefHeight="35.0" prefWidth="354.0" style="-fx-background-color: #A52A2A;" />
-            <Label fx:id="description" layoutX="30.0" layoutY="305.0" prefHeight="158.0" prefWidth="354.0" style="-fx-background-color: #A52A2A;" />
             <Label fx:id="ville" layoutX="30.0" layoutY="252.0" prefHeight="35.0" prefWidth="354.0" style="-fx-background-color: #A52A2A;" />
-            <JFXButton fx:id="contact" layoutX="292.0" layoutY="22.0" prefHeight="35.0" prefWidth="116.0" text="Contact" />
+            <JFXButton fx:id="contact" layoutX="292.0" layoutY="22.0" onAction="#Contact" prefHeight="35.0" prefWidth="116.0" text="Contact" />
             <Label fx:id="tel" layoutX="30.0" layoutY="195.0" prefHeight="35.0" prefWidth="354.0" style="-fx-background-color: #A52A2A;" />
+            <JFXTextArea fx:id="description" layoutX="29.0" layoutY="304.0" prefHeight="158.0" prefWidth="354.0" />
          </children>
       </Pane>
+      <VBox layoutY="5.0" prefHeight="450.0" prefWidth="207.0">
+         <children>
+            <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="profil" onAction="#MonProfil" prefHeight="50.0" prefWidth="200.0" text="Mon Profil" />
+            <JFXButton fx:id="creecv" onAction="#CreeCv" prefHeight="50.0" prefWidth="190.0" text="Crée Cv" />
+            <JFXButton fx:id="listeentreprise" layoutX="10.0" layoutY="260.0" onAction="#ListeEntreprise" prefHeight="50.0" prefWidth="191.0" text="Liste Entreprise" />
+            <JFXButton fx:id="telechergercv" layoutX="10.0" layoutY="310.0" onAction="#TélechargerCv" prefHeight="50.0" prefWidth="200.0" text="Télecharger Cv" />
+            <JFXButton fx:id="deconnection" layoutX="10.0" layoutY="210.0" onAction="#Deconnection" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

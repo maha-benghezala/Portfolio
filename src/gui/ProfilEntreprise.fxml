@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,10 +15,10 @@
       <VBox prefHeight="500.0" prefWidth="201.0">
          <children>
             <ImageView fx:id="imge" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton prefHeight="50.0" prefWidth="208.0" text=" Profil" />
-            <JFXButton layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0" text="Liste des Freelancers" />
-            <JFXButton layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="200.0" text="Rate" />
-            <JFXButton layoutX="10.0" layoutY="260.0" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
+            <JFXButton fx:id="profil" onAction="#Profil" prefHeight="50.0" prefWidth="208.0" text=" Profil" />
+            <JFXButton fx:id="liste" layoutX="10.0" layoutY="160.0" onAction="#listeFeelancer" prefHeight="50.0" prefWidth="200.0" text="Liste des Freelancers" />
+            <JFXButton fx:id="rate" layoutX="10.0" layoutY="210.0" onAction="#Rate" prefHeight="50.0" prefWidth="200.0" text="Rate" />
+            <JFXButton fx:id="deconnection" layoutX="10.0" layoutY="260.0" onAction="#Deconnection" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
          </children>
       </VBox>
       <Line endX="-109.0" endY="404.29290771484375" layoutX="320.0" layoutY="97.0" startX="-109.0" startY="-97.0" />
@@ -43,7 +44,6 @@
          </font>
       </Label>
       <JFXClippedPane layoutX="771.0" layoutY="173.0" prefHeight="248.0" prefWidth="216.0" />
-      <Label fx:id="descriptionEntreprise" alignment="TOP_LEFT" layoutX="222.0" layoutY="198.0" prefHeight="230.0" prefWidth="535.0" />
       <Label fx:id="mail" layoutX="628.0" layoutY="99.0" prefHeight="33.0" prefWidth="373.0">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
@@ -54,5 +54,6 @@
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
+      <JFXTextArea fx:id="descriptionEntreprise" layoutX="254.0" layoutY="225.0" prefHeight="234.0" prefWidth="464.0" />
    </children>
 </AnchorPane>

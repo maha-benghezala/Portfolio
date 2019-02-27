@@ -8,7 +8,12 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CompetenceController">
    <children>
       <JFXTextField fx:id="competencetxt" layoutX="27.0" layoutY="72.0" onAction="#OnAddCompetence" prefHeight="37.0" prefWidth="534.0" promptText="Compétence " />
-      <JFXButton fx:id="AjouterCompetence" layoutX="34.0" layoutY="303.0" onAction="#OnAddCompetence" prefHeight="37.0" prefWidth="521.0" text="Ajouter">
+      <JFXButton fx:id="AjouterCompetence" layoutX="363.0" layoutY="303.0" onAction="#OnAddCompetence" prefHeight="37.0" prefWidth="192.0" text="Ajouter">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="Annuler" layoutX="47.0" layoutY="303.0" onAction="#Annuler" prefHeight="37.0" prefWidth="192.0" text="Annuler">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>

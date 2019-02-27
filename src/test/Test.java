@@ -22,7 +22,7 @@ import modals.User;
  */
 public class Test extends Application{
 
-   
+   public static String link;
     //Variable statique de l'utilisateur connectèe : 
     
     final ScrollBar sc=new ScrollBar();
@@ -33,7 +33,7 @@ public class Test extends Application{
            
             Parent root ;
             
-                root = FXMLLoader.load(getClass().getResource("/gui/ListeEntreprise.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/gui/ProfilEntreprise.fxml"));
             
            
             stage.setTitle("Cree CV");

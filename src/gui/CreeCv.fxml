@@ -22,7 +22,7 @@
             </Pane>
             <Pane layoutX="773.0" layoutY="537.0" prefHeight="133.0" prefWidth="290.0">
                <children>
-                  <ListView fx:id="listelangue" layoutX="6.0" prefHeight="133.0" prefWidth="290.0" styleClass="list-cell" stylesheets="@fxml1.css" />
+                  <ListView fx:id="listelangue" layoutX="6.0" prefHeight="133.0" prefWidth="281.0" styleClass="list-cell" stylesheets="@fxml1.css" />
                   <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="-217.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../pi/system.png" />
@@ -50,27 +50,27 @@
             <Pane prefHeight="122.0" prefWidth="1067.0">
                <children>
                   <ImageView fx:id="imgaffiche" fitHeight="113.0" fitWidth="140.0" layoutX="880.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="nom" layoutX="61.0" layoutY="1.0" prefHeight="27.0" prefWidth="226.0" text="Nom" textFill="WHITE">
+                  <Label fx:id="nom" layoutX="61.0" layoutY="7.0" prefHeight="27.0" prefWidth="226.0" textFill="#050550">
                      <font>
                         <Font name="Times New Roman" size="24.0" />
                      </font></Label>
-                  <Label fx:id="position" layoutX="61.0" layoutY="28.0" prefHeight="27.0" prefWidth="226.0" text="position" textFill="#050550">
+                  <Label fx:id="position" layoutX="61.0" layoutY="47.0" prefHeight="27.0" prefWidth="226.0" textFill="#050550">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font></Label>
-                  <Label fx:id="email1" layoutX="61.0" layoutY="57.0" prefHeight="27.0" prefWidth="226.0" text="email1" textFill="#050550">
+                  <Label fx:id="email1" layoutX="330.0" layoutY="47.0" prefHeight="27.0" prefWidth="226.0" textFill="#050550">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label fx:id="email2" layoutX="348.0" layoutY="57.0" prefHeight="27.0" prefWidth="200.0" text="lien" textFill="#050550">
+                  <Label fx:id="linkedin" layoutX="579.0" layoutY="47.0" prefHeight="27.0" prefWidth="255.0" textFill="#050550">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font></Label>
-                  <Label fx:id="numero" layoutX="61.0" layoutY="84.0" prefHeight="27.0" prefWidth="226.0" text="numero" textFill="#050550">
+                  <Label fx:id="numero" layoutX="61.0" layoutY="85.0" prefHeight="27.0" prefWidth="226.0" textFill="#050550">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font></Label>
-                  <Label fx:id="adresse" layoutX="348.0" layoutY="85.0" prefHeight="27.0" prefWidth="236.0" text="adresse" textFill="#050550">
+                  <Label fx:id="adresse" layoutX="330.0" layoutY="85.0" prefHeight="27.0" prefWidth="226.0" textFill="#050550">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font></Label>
@@ -84,11 +84,6 @@
                         <Image url="@../../../../pi/phone.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="35.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../pi/gmail.png" />
-                     </image>
-                  </ImageView>
                   <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="318.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../pi/gmail.png" />
@@ -99,6 +94,14 @@
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
+                  <Label fx:id="gitub" layoutX="579.0" layoutY="85.0" prefHeight="27.0" prefWidth="255.0" textFill="#050550">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="retour" layoutY="2.0" onAction="#Retour" text="Retour" />
+                  <JFXButton fx:id="update" layoutY="27.0" onAction="#update" text="Update" />
+                  <JFXButton fx:id="pdf" layoutY="58.0" onAction="#Pdf" prefHeight="25.0" prefWidth="52.0" text="pdf" />
                </children>
             </Pane>
             <Pane layoutX="-2.0" layoutY="122.0" prefHeight="95.0" prefWidth="1067.0">
@@ -118,7 +121,7 @@
             </Label>
             <Pane layoutX="511.0" layoutY="239.0" prefHeight="278.0" prefWidth="551.0">
                <children>
-                  <ListView fx:id="listeExperience" layoutX="3.0" layoutY="-1.0" prefHeight="278.0" prefWidth="543.0" styleClass="list-cell" stylesheets="@fxml1.css" />
+                  <ListView fx:id="listeExperience" layoutX="3.0" layoutY="-1.0" prefHeight="278.0" prefWidth="551.0" styleClass="list-cell" stylesheets="@fxml1.css" />
                </children>
             </Pane>
             <Label layoutX="511.0" layoutY="219.0" prefHeight="20.0" prefWidth="123.0" text="Experience" textFill="#060664">
@@ -129,7 +132,7 @@
             <Pane layoutX="519.0" layoutY="534.0" prefHeight="133.0" prefWidth="255.0">
                <children>
                   <ListView fx:id="listecompetence" layoutY="3.0" prefHeight="133.0" prefWidth="242.0" styleClass="list-cell" stylesheets="@fxml1.css" />
-                  <Line endX="51.0" endY="-9.0" layoutX="78.0" layoutY="15.0" startX="-78.0" startY="-9.0" stroke="#060664" />
+                  <Line endX="49.5" endY="-15.0" layoutX="78.0" layoutY="15.0" startX="-78.0" startY="-15.0" stroke="#060664" />
                </children>
             </Pane>
             <Line endX="84.0" layoutX="61.0" layoutY="543.0" startX="-63.0" stroke="#060664" />
@@ -169,7 +172,7 @@
                </font>
             </Label>
             <Line endX="60.0" endY="-6.0" layoutX="574.0" layoutY="245.0" startX="-63.0" startY="-6.0" stroke="#060664" />
-            <Label layoutX="519.0" layoutY="514.0" prefHeight="20.0" prefWidth="107.0" text="Competence" textFill="#060664">
+            <Label layoutX="519.0" layoutY="515.0" prefHeight="20.0" prefWidth="107.0" text="Competence" textFill="#060664">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>

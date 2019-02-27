@@ -11,12 +11,14 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Portfolio.jar" size="402511" download="eager" />
+    <jar href="Portfolio.jar" size="416828" download="eager" />
     <jar href="lib/controlsfx-8.40.14.jar" size="1215643" download="eager" />
-    <jar href="lib/controlsfx-samples-8.40.14.jar" size="725707" download="eager" />
-    <jar href="lib/fxsampler-1.0.10.jar" size="30882" download="eager" />
+    <jar href="lib/itext-1.4.8.jar" size="1891191" download="eager" />
+    <jar href="lib/javax.mail-api-1.4.7.jar" size="189526" download="eager" />
     <jar href="lib/jfoenix-8.0.8.jar" size="2708772" download="eager" />
     <jar href="lib/jfoenix-9.0.8.jar" size="2419463" download="eager" />
+    <jar href="lib/jpedal-trial.jar" size="8118579" download="eager" />
+    <jar href="lib/jpedal_gpl.jar" size="2527561" download="eager" />
     <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="827921" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Portfolio" >

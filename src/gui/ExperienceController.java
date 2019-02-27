@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -142,15 +143,19 @@ public class ExperienceController implements Initializable {
 
     @FXML
     private void Annuler(ActionEvent event) {
+           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           stage.close();
     }
 
     @FXML
     private void Enregistrer(ActionEvent event) {
            ExperienceService es = new  ExperienceService();
-//        if (!Nomentreprise.getText().isEmpty()) {
-//            System.out.println("remplir tous les champs!");}
-//        else
-//        { 
+        if (!Nomentreprise.getText().isEmpty() || !intitule.getText().isEmpty()|| lieu.getText().isEmpty() || !secteur.getValue().isEmpty()) {
+           
+           if(Integer.parseInt(anneef.getValue())> Integer.parseInt(anneed.getValue()))
+           {
+              
+           
            Experience e=new Experience();
          
            e.setId_user(1);
@@ -164,24 +169,17 @@ public class ExperienceController implements Initializable {
          e.setMois_fin(moisf.getValue());
              e.setAnnée_fin(anneef.getValue());
         e.setSecteur(secteur.getValue());
-    
-//       if(check.isSelected())
-//       {
-//           
-//           moisf.setVisible(false);
-//           anneef.setVisible(false);
-//       }else{
-//           moisd.setVisible(true);
-//           anneed.setVisible(true);
-//       }
+         es.ajouterExperience(e);
+      ((Node)(event.getSource())).getScene().getWindow().hide();
 
-
-             
-   
-
-          es.ajouterExperience(e);
-    }
-
+           }else{
+                System.out.println("verfier votre date");
+                }
+         }  else{
+            System.out.println("remplir tous les champs!");
+                }
+        
+  }
     @FXML
     private void change(ActionEvent event) {
         if(check.isSelected())

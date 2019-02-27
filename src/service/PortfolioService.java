@@ -32,7 +32,7 @@ public class PortfolioService {
     public void ajouterPortfolio(Portfolio p) {
         try {
             Statement st = C.createStatement();
-            String req = "INSERT INTO `portfolio`(`id-user`, `image`, `titre`, `adresse`, `parler`) VALUES("+ p.getId_user() +",'" +p.getImage() +"','" +p.getTitre() +"','" +p.getAdresse() +"','"+p.getParler()+"')";
+            String req = "INSERT INTO `portfolio`(`id`, `id-user`, `image`, `titre`, `adresse`, `parler`, `github`, `likedin`)  VALUES("+ p.getId_user() +",'" +p.getImage() +"','" +p.getTitre() +"','" +p.getAdresse() +"','"+p.getParler()+"','"+p.getGithub()+"','"+p.getLinkedin()+"')";
          /** String req = "INSERT INTO `portfolio`( `id-user`, `specialite`, `nom`, `prenom`, `poste_actuel`, `adresse`, `tel`, `parler`) VALUES" + p.getId_user() + ",'" 
                     +p.getSpecialite() +"','" +p.getNom() +"','" +p.getPrenom() +"','" +p.getPoste_actuel() +"','" +p.getAdresse() +"'," 
                     +p.getTel() +",'"+p.getParler()+"')";**/
@@ -52,7 +52,7 @@ public class PortfolioService {
             while(rs.next())
             {
                 System.out.println("`portfolio`"+rs.getInt(1)+","+rs.getString(3)+","+rs.getString(4)+", "+rs.getInt(2)+","
-                        +rs.getString(5)+","+rs.getString(6));
+                        +rs.getString(5)+","+rs.getString(6)+","+rs.getString(7)+","+rs.getString(8));
                 
             }   } catch (SQLException ex) {
             Logger.getLogger(PortfolioService .class.getName()).log(Level.SEVERE, null, ex);
@@ -63,14 +63,17 @@ public class PortfolioService {
     public void modiferPortfolio(Portfolio p)
     {
         try {
-            PreparedStatement pt = C.prepareStatement("UPDATE `portfolio` SET `image`=?,`titre`=?,`adresse`=?,`parler`=? WHERE `id` =?");
+            PreparedStatement pt = C.prepareStatement("UPDATE `portfolio` SET `image`=?,`titre`=?,`adresse`=?,`parler`=?,`github`=?,`likedin`=? WHERE `id` =?");
             pt.setString(1,p.getImage());
            
             pt.setString(2,p.getTitre());
             pt.setString(3,p.getAdresse());
          
             pt.setString(4,p.getParler());
-            pt.setInt(5,p.getId());
+            pt.setString(5,p.getGithub());
+            pt.setString(6,p.getLinkedin());
+            pt.setInt(7,p.getId());
+            
             pt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PortfolioService.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,13 +104,11 @@ public class PortfolioService {
                 if (rs.next()) {
                     a.setId(rs.getInt("id"));
                     a.setImage(rs.getString("image"));
-
-                     a.setTitre(rs.getString("titre"));
+                    a.setTitre(rs.getString("titre"));
                     a.setAdresse(rs.getString("adresse"));
-                   
-                  
                     a.setParler(rs.getString("parler"));
-                  
+                    a.setGithub(rs.getString("github"));
+                    a.setLinkedin(rs.getString("likedin"));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(PortfolioService.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,6 +132,8 @@ public class PortfolioService {
                    
                    
                     a.setParler(rs.getString("parler"));
+                    a.setGithub(rs.getString("github"));
+                    a.setLinkedin(rs.getString("likedin"));
                   a.setId_user(rs.getInt("id-user"));
                 }
             } catch (SQLException ex) {
@@ -139,37 +142,37 @@ public class PortfolioService {
         
         return a;
     }
-public Portfolio PortfolioUser(String nom,String prenom)
-{
-        Portfolio f = null; 
-        String request = "SELECT * FROM `user` WHERE `prenom` = ? AND `nom` = ?";
-        try {
-            ste = C.prepareStatement(request);
-            ste.setString(1, prenom);
-            ste.setString(2, nom);
-            ResultSet rs = ste.executeQuery();
-            if(rs.next()){
-           
-               
-                    System.out.println("connecter");
-            
-                   f=new Portfolio();
-                    f.setId(rs.getInt(1));
-                    f.setId_user(rs.getInt(2));
-                  
-                   
-                    f.setTitre(rs.getString(6));
-                    f.setAdresse(rs.getString(7));
-                   
-                    f.setParler(rs.getString(9));
-                   return f;
-             
-            }
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-     return f;
-}
+//public Portfolio PortfolioUser(String nom,String prenom)
+//{
+//        Portfolio f = null; 
+//        String request = "SELECT * FROM `user` WHERE `prenom` = ? AND `nom` = ?";
+//        try {
+//            ste = C.prepareStatement(request);
+//            ste.setString(1, prenom);
+//            ste.setString(2, nom);
+//            ResultSet rs = ste.executeQuery();
+//            if(rs.next()){
+//           
+//               
+//                    System.out.println("connecter");
+//            
+//                   f=new Portfolio();
+//                    f.setId(rs.getInt(1));
+//                    f.setId_user(rs.getInt(2));
+//                  
+//                   
+//                    f.setTitre(rs.getString(6));
+//                    f.setAdresse(rs.getString(7));
+//                   
+//                    f.setParler(rs.getString(9));
+//                   return f;
+//             
+//            }
+//        } catch (SQLException e) {
+//            System.err.println(e);
+//        }
+//     return f;
+//}
 public Freelancer selectFreelancer()
 {
   Freelancer user = new Freelancer();
@@ -182,13 +185,14 @@ public Freelancer selectFreelancer()
              ResultSet rs = st.executeQuery(req);
            while(rs.next()){
                 
-                user.setId(rs.getInt(1));
-                user.setAdresse(rs.getString(4));
-                user.setMail(rs.getString(5));
-                user.setTel(rs.getInt(6));
-                user.setNom(rs.getString(8));
-                user.setPrenom(rs.getString(9));
-                user.setPoste(rs.getString(12));
+                user.setId(rs.getInt("iduser"));
+                user.setAdresse(rs.getString("adresse"));
+                user.setMail(rs.getString("mail"));
+                user.setTel(rs.getInt("tel"));
+                user.setNom(rs.getString("Nom"));
+                user.setPrenom(rs.getString("prenom"));
+             
+                user.setSpecialite(rs.getString("specialite"));
                 user.setDisponible(rs.getString("disponible"));
                 user.setVisible(rs.getString("visible"));
     }

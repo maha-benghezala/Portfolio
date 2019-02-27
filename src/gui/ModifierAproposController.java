@@ -21,9 +21,11 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import modals.Freelancer;
 import modals.Portfolio;
@@ -139,6 +141,9 @@ public class ModifierAproposController implements Initializable {
 
     @FXML
     private void Annuler(ActionEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
     
 }

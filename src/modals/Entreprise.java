@@ -23,7 +23,7 @@ public class Entreprise extends User{
     private String post;
     private String description;
 
-    public Entreprise(String nom_sc, String post, String specialite, String certif, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, double tel) {
+    public Entreprise(String nom_sc, String post, String specialite, String certif, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail,int tel) {
         super(id, nom_utilisateur, mot_de_passe, adresse, mail, tel);
         this.nom_sc = nom_sc;
         this.post = post;
@@ -56,7 +56,7 @@ public class Entreprise extends User{
         this.specialite = specialite;
     }
 
-    public Entreprise(String nom_sc, String post, String specialite, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, double tel) {
+    public Entreprise(String nom_sc, String post, String specialite, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, int tel) {
         super(id, nom_utilisateur, mot_de_passe, adresse, mail, tel);
         this.nom_sc = nom_sc;
         this.post = post;

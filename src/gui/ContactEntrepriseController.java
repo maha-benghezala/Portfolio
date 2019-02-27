@@ -5,6 +5,7 @@
  */
 package gui;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,6 +29,7 @@ import modals.Entreprise;
 import modals.User;
 import service.CompetenceService;
 import service.ContactEntrepriseService;
+import utlis.Utilities;
 
 /**
  * FXML Controller class
@@ -45,8 +47,6 @@ public class ContactEntrepriseController implements Initializable {
     @FXML
     private Label tel;
     @FXML
-    private Label fax;
-    @FXML
     private Label mail;
     @FXML
     private TextField nom;
@@ -61,6 +61,8 @@ public class ContactEntrepriseController implements Initializable {
     @FXML
     private Button envoyer;
     public static Entreprise entreprise;
+    @FXML
+    private JFXButton annuler;
     /**
      * Initializes the controller class.
      */
@@ -83,29 +85,36 @@ public class ContactEntrepriseController implements Initializable {
      
         
             ContactEntreprise ce=new ContactEntreprise();
-     
-         
-          ce.setId_user(3);
+      if (!nom.getText().isEmpty()|| !sujet.getText().isEmpty() || !tele.getText().isEmpty() ||!commentaire.getText().isEmpty()) {
+          
+          if(!Utilities.validateEmail(email.getText()))
+          {
+             
+                ce.setId_user(3);
            ce.setNom(nom.getText());
            ce.setEmail(email.getText());
            ce.setSujet(sujet.getText());
            ce.setTel((int) Double.parseDouble(tele.getText()));
            ce.setMessage(commentaire.getText());
            ces.ajouterContactEntreprise(ce);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ContactEntreprise.fxml"));
-            try {
-                Pane pane = (Pane) loader.load();
-                stage.setTitle("Contact");
-                Scene scene = new Scene(pane);
-                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-                stage.centerOnScreen();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(ContactEntrepriseController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+              
+          }else{
+               System.out.println("verifier votre email");
+          }
+         
+        
+    
+      }else{
+            System.out.println("remplir tous les champs!");
         }
     }
+
+    @FXML
+    private void Annuler(ActionEvent event) {
+          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
+    }
+}
     
 

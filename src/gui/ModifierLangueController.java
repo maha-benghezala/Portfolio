@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import modals.Langue;
 import service.LangueService;
 
@@ -52,15 +53,17 @@ public static int id;
     @FXML
     private void EnregistrerLangue(ActionEvent event) {
           LangueService ls=new LangueService ();
-//           if (!langue.getText().isEmpty()) {
-//            System.out.println("remplir tous les champs!");}
-//        else
-//        { 
-           Langue l=ls.get(id);
+     if (!langue.getText().isEmpty()) {
+        Langue l=ls.get(id);
         l.setLangue(langue.getText());
         l.setNiveau(niveau.getValue());
         l.setId_user(1);
         ls.modiferLangue(l);
+      ((Node)(event.getSource())).getScene().getWindow().hide();
+
+     }else{
+         System.out.println("remplir tous les champs!");
+     }
     }
 
     @FXML

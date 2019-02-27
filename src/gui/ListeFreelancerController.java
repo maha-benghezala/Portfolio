@@ -7,6 +7,7 @@ package gui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextArea;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,7 +21,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -52,6 +55,26 @@ public class ListeFreelancerController implements Initializable {
     @FXML
     private JFXListView listeFreelancer;
        public static int id;
+    @FXML
+    private Pane pane;
+    @FXML
+    private Label Nom;
+    @FXML
+    private Label adresse;
+    @FXML
+    private Label specialite;
+    @FXML
+    private Label ville;
+    @FXML
+    private JFXButton contact;
+    @FXML
+    private Label tel;
+    @FXML
+    private JFXTextArea description;
+    @FXML
+    private JFXButton rate;
+    @FXML
+    private JFXButton deconnection;
     
 
     /**
@@ -60,6 +83,14 @@ public class ListeFreelancerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+                           Nom.setVisible(false);
+                           adresse.setVisible(false);
+                           ville.setVisible(false);
+                           specialite.setVisible(false);
+                           description.setVisible(false);
+                           tel.setVisible(false);
+                           contact.setVisible(false);
+                           description.setDisable(true);
           PortfolioService es = new PortfolioService();
        ArrayList<Freelancer> p= new ArrayList<>();
        p = es.SelectFreelancer();
@@ -87,21 +118,20 @@ public class ListeFreelancerController implements Initializable {
                             voir.setOnAction(new EventHandler<ActionEvent>(){
                                 @Override
                                 public void handle(ActionEvent event) {
-                                    System.out.println(item.getId());
-                                    ListeFreelancerController.id=item.getId();
-                                    Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/listeFreelancer.fxml"));
-            try {
-                Pane pane = (Pane) loader.load();
-                stage.setTitle("Liste Freelancer");
-                Scene scene = new Scene(pane);
-                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-                stage.centerOnScreen();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                           Nom.setVisible(true);
+                           adresse.setVisible(true);
+                           ville.setVisible(true);
+                           specialite.setVisible(true);
+                           description.setVisible(true);
+                           tel.setVisible(true);
+                           contact.setVisible(true);
+                           Nom.setText(item.getPrenom()+" "+item.getNom());
+                           specialite.setText(item.getSpecialite());
+                           adresse.setText(item.getAdresse());
+                           ville.setText(item.getVille());
+                           tel.setText(item.getTel()+"");
+                           description.setText(item.getDescription());
+            
                                 }
                                 
                             });
@@ -128,5 +158,64 @@ public class ListeFreelancerController implements Initializable {
 
         });
     }    
+
+    @FXML
+    private void Contact(ActionEvent event) {
+           Stage stage =new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ContactUser.fxml"));
+            try {
+                Pane pane = (Pane) loader.load();
+                stage.setTitle("Competence");
+                Scene scene = new Scene(pane);
+                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                stage.centerOnScreen();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(formulaireController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void Profil(ActionEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ProfilEntreprise.fxml"));
+            try {
+                Pane pane = (Pane) loader.load();
+                stage.setTitle("profil");
+                Scene scene = new Scene(pane);
+                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                stage.centerOnScreen();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void Listefreelancer(ActionEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/listeFreelancer.fxml"));
+            try {
+                Pane pane = (Pane) loader.load();
+                stage.setTitle("Liste Freelancer");
+                Scene scene = new Scene(pane);
+                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                stage.centerOnScreen();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    @FXML
+    private void Rate(ActionEvent event) {
+    }
+
+    @FXML
+    private void Deconnection(ActionEvent event) {
+    }
     
 }

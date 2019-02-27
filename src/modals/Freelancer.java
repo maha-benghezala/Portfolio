@@ -35,7 +35,7 @@ public class Freelancer extends User{
     }
     private String certif;
 
-    public Freelancer(String nom, String prenom, String specialite, String certif, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, double tel,String poste) {
+    public Freelancer(String nom, String prenom, String specialite, String certif, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail,int tel,String poste) {
         super(id, nom_utilisateur, mot_de_passe, adresse, mail, tel);
         this.nom = nom;
         this.prenom = prenom;
@@ -54,7 +54,7 @@ public class Freelancer extends User{
         this.specialite = specialite;
     }
 
-    public Freelancer(String nom, String prenom, String specialite, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, double tel) {
+    public Freelancer(String nom, String prenom, String specialite, int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, int tel) {
         super(id, nom_utilisateur, mot_de_passe, adresse, mail, tel);
         this.nom = nom;
         this.prenom = prenom;

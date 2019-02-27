@@ -89,6 +89,10 @@ public class formulaireController implements Initializable {
     @FXML
     private JFXButton sup;
  public static int id;
+    @FXML
+    private JFXTextField likedin;
+    @FXML
+    private JFXTextField github;
 
     /**
      * Initializes the controller class.
@@ -109,6 +113,8 @@ public class formulaireController implements Initializable {
        titre.setText(p.getTitre());
        description.setText(p.getParler());
        btn.setText(p.getImage());
+       github.setText(p.getGithub());
+       likedin.setText(p.getLinkedin());
       
 
     }
@@ -127,25 +133,42 @@ public class formulaireController implements Initializable {
            
             if(p ==null)
         {
-            
-        
+            if(!adresse.getText().isEmpty() && !titre.getText().isEmpty() &&!description.getText().isEmpty())
+            {
+              if((tel+"").length()==8)
+              {
+                  
+             
         
        adresse.setText(p.getAdresse());
        Image image=new Image("http://localhost"+p.getImage());
        img.setImage(image);
        titre.setText(p.getTitre());
        description.setText(p.getParler());
+       github.setText(p.getGithub());
+       likedin.setText(p.getLinkedin());
             ps.ajouterPortfolio(p);
-        }else{
+              ((Node)(event.getSource())).getScene().getWindow().hide(); 
+              }
+            else{
+                System.out.println("Verifier votre numero!");
+            }
+      }else{
+                  System.out.println("remplir tous les champs!");   
+      }
+                   
+    }else{
       
         System.out.println(p.toString());
         p.setParler(description.getText());
         p.setTitre(titre.getText());
         p.setAdresse(adresse.getText());
         p.setImage(btn.getText());
-     
+        p.setGithub(github.getText());
+        p.setLinkedin(likedin.getText());
     
              ps.modiferPortfolio(p);
+               ((Node)(event.getSource())).getScene().getWindow().hide(); 
              //Window owner = titre.getScene().getWindow();
                 
 //              Alert alert = new Alert(AlertType.INFORMATION);
@@ -176,6 +199,7 @@ public class formulaireController implements Initializable {
                 
                            }
                     });
+           ((Node)(event.getSource())).getScene().getWindow().hide();
          
         }
         
@@ -202,19 +226,9 @@ public class formulaireController implements Initializable {
 
     @FXML
     private void Annuler(ActionEvent event) {
-       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CreeCv.fxml"));
-            try {
-                Pane pane = (Pane) loader.load();
-                stage.setTitle("");
-                Scene scene = new Scene(pane);
-                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-                stage.centerOnScreen();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
                                 }
     }
 

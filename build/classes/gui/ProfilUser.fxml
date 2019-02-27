@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
@@ -9,18 +10,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import org.jpedal.PdfDecoderFX?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfilUserController">
    <children>
       <VBox layoutY="1.0" prefHeight="450.0" prefWidth="200.0">
          <children>
             <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton fx:id="cv" prefHeight="50.0" prefWidth="200.0" text="Crée Cv" />
-            <JFXButton fx:id="recrutement" prefHeight="50.0" prefWidth="200.0" text="Recrutement" />
-            <JFXButton fx:id="listeentreprise" onAction="#ListeEntreprise" prefHeight="50.0" prefWidth="200.0" text="Liste Entreprises" />
-            <JFXButton layoutX="10.0" layoutY="260.0" prefHeight="50.0" prefWidth="200.0" text="Offres" />
-            <JFXButton fx:id="deconnetion" layoutX="10.0" layoutY="310.0" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
-            <JFXButton layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0" />
+            <JFXButton fx:id="profil" onAction="#MonProfil" prefHeight="50.0" prefWidth="200.0" text="Mon Profil" />
+            <JFXButton fx:id="creecv" onAction="#CreeCv" prefHeight="50.0" prefWidth="200.0" text="Crée Cv" />
+            <JFXButton fx:id="listeentreprise" layoutX="10.0" layoutY="260.0" onAction="#ListeEntreprise" prefHeight="50.0" prefWidth="200.0" text="Liste Entreprise" />
+            <JFXButton fx:id="telechergercv" layoutX="10.0" layoutY="310.0" onAction="#TélechargerCv" prefHeight="50.0" prefWidth="200.0" text="Télecharger Cv" />
+            <JFXButton fx:id="deconnection" layoutX="10.0" layoutY="210.0" onAction="#Deconnection" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
+            <PdfDecoderFX fx:id="menudeco" />
          </children>
       </VBox>
       <Line endX="-112.0" endY="419.0" layoutX="315.0" layoutY="81.0" startX="-112.0" startY="-81.0" />
@@ -65,11 +67,15 @@
             <JFXToggleButton fx:id="disponible" layoutX="107.0" layoutY="54.0" onAction="#onDisponibilite" />
             <JFXToggleButton fx:id="visible" layoutX="107.0" layoutY="100.0" onAction="#onVisible" />
          </children></Pane>
-      <Label fx:id="description" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="216.0" layoutY="226.0" prefHeight="211.0" prefWidth="528.0" />
       <Label alignment="CENTER" layoutX="333.0" layoutY="190.0" prefHeight="23.0" prefWidth="242.0" text="À propos de moi">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Label>
+      <JFXTextArea fx:id="description" layoutX="210.0" layoutY="231.0" prefHeight="221.0" prefWidth="530.0" unFocusColor="#171717">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </JFXTextArea>
    </children>
 </AnchorPane>

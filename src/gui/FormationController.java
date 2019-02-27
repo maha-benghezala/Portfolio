@@ -92,11 +92,11 @@ public class FormationController implements Initializable {
     @FXML
     private void EnregistrerFormation(ActionEvent event) {
      
-//        if (!Nomecole.getText().isEmpty()) {
-//            System.out.println("remplir le nom de l'ecole");
-//        } else if (!Niveauetude.getText().isEmpty()) {
-//            System.out.println("remplir le nom de l'ecole");
-//        } else {            
+    if (!Nomecole.getText().isEmpty() ||!domaine.getText().isEmpty() || !diplome.getText().isEmpty()) {
+           
+         if (!anneedebut.getValue().isEmpty()) 
+            {
+           
              FormationService fs = new FormationService();
           Formation f = new Formation();
             f.setNom_ecole(Nomecole.getText());
@@ -107,27 +107,23 @@ public class FormationController implements Initializable {
             f.setAnnée_debut( anneedebut.getValue());
             f.setId_user(1);
             fs.ajouterFormation(f);
-            
-//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Formation.fxml"));
-//            try {
-//                 
-//                Pane pane = (Pane) loader.load();
-//                stage.setTitle("Formation");
-//                Scene scene = new Scene(pane);
-//                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-//                stage.centerOnScreen();
-//                stage.setScene(scene);
-//                stage.show();
-//            } catch (IOException ex) {
-//                Logger.getLogger(formulaireController.class.getName()).log(Level.SEVERE, null, ex);
-//            
-//            }
+        ((Node)(event.getSource())).getScene().getWindow().hide();
+
+                }else{
+                 System.out.println("remplir date");
+                } 
+            }else{
+             System.out.println("remplir tous les champs!");  
+               } 
+
     }
   
-
+    
     @FXML
     private void Annuler(ActionEvent event) {
+           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
     
     

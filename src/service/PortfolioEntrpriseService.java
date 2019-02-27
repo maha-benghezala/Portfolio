@@ -103,6 +103,7 @@ public class PortfolioEntrpriseService {
                 user.setAdresse(rs.getString("adresse"));
                 user.setDescription(rs.getString("description"));
                 user.setRole(rs.getString("role"));
+                user.setTel(rs.getInt("tel"));
            E.add(user);
     }
                 

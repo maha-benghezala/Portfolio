@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import java.io.File;
 import java.io.FileInputStream;
+import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -22,12 +23,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+//import javafx.scene.control.Alert;
+
+
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -36,8 +42,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 import modals.Certification;
 import modals.Competence;
+import org.controlsfx.control.Notifications;
 import service.CertificationService;
 import service.CompetenceService;
 
@@ -129,32 +137,28 @@ public class CertificatController implements Initializable {
                     new String("2018"),
                     new String("2019"),
                     new String("2020")));
+//                 Notifications notificationBuilder = Notifications.create()
+//                .title("Done")
+//                .text("hello")
+//                .graphic(null)
+//                .hideAfter(Duration.seconds(30))
+//                .position(Pos.BOTTOM_RIGHT)
+//                ;
+//        notificationBuilder.showConfirm();
            
 
     }    
 
-//    private void ChooseFile(ActionEvent event) {
-//        Window owner = Nomf.getScene().getWindow();
-//        FileChooser chooser = new FileChooser();
-//         File file = chooser.showOpenDialog(null);
-//         file1 = file.getAbsoluteFile();
-//        if (file1.getAbsolutePath().endsWith(".pdf") || file1.getAbsolutePath().endsWith(".docx")) {
-//            
-//            String imagePath = "/propriete/" + file1.getName();
-//            Nomf.setText(imagePath);
-//        }
-        
-//    }
+
 
     @FXML
     private void OnAdd(ActionEvent event) {
              CertificationService cs = new   CertificationService();
-//        if (!NomCertificat.getText().isEmpty()|| !AutoriteCertificat.getText().isEmpty() || !Numerolicence.getText().isEmpty()) {
-//            System.out.println("remplir tous les champs!");}
-//        else
-//        { 
+        if (!NomCertificat.getText().isEmpty()|| !organisme.getText().isEmpty() || !Numerolicence.getText().isEmpty()) {
             
-           Certification ce=new Certification();
+          if(Integer.parseInt(Anneefin.getValue()) < Integer.parseInt(Anneedebut.getValue()))
+          {
+            Certification ce=new Certification();
            ce.setId_user(1);
          ce.setNom_de_certification(NomCertificat.getText());
          
@@ -165,33 +169,28 @@ public class CertificatController implements Initializable {
          ce.setMois_debut(Moisdebut.getValue());
          ce.setMois_fin(Moisfin.getValue());
          ce.setUrl(url.getText());
-//         try {
-//  
 
-//                Path path1 = Paths.get(file1.getAbsolutePath());
-//                
-//                Files.copy(path1, path1.resolve(path1.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-//               
-//            } catch (IOException ex) {
-//                Logger.getLogger(CertificatController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-           
           cs.ajouterCertification(ce);
-           
-//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CréeCv.fxml"));
-//            try {
-//                Pane pane = (Pane) loader.load();
-//                stage.setTitle("Competence");
-//                Scene scene = new Scene(pane);
-//                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-//                stage.centerOnScreen();
-//                stage.setScene(scene);
-//                stage.show();
-//            } catch (IOException ex) {
-//                Logger.getLogger(formulaireController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+         ((Node)(event.getSource())).getScene().getWindow().hide();
+          
+//           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("Information Dialog");
+//        alert.setHeaderText("Look, an Information Dialog");
+//        alert.setContentText("I have a great message for you!");
+//
+//        alert.showAndWait();
+        
+        }else{
+              System.out.println("verifier votre date"); 
+          }
+        }
+        else{
+            
+            System.out.println("Remplir tous les champs!");
+            
+        }
+        
+    
     }
 
     @FXML

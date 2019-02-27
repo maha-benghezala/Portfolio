@@ -65,18 +65,15 @@ public class LangueController implements Initializable {
                 new String("Debutant"),
                     new String("Intermidiare"),
                     new String("Professionnelle")));
-//        } else {
-//           niveau.setValue("");
-//           niveau.setDisable(true);
+
     }}
 
     @FXML
     private void EnregistrerLangue(ActionEvent event) {
         LangueService ls=new LangueService ();
-//           if (!langue.getText().isEmpty()) {
-//            System.out.println("remplir tous les champs!");}
-//        else
-//        { 
+           if (!langue.getText().isEmpty()|| !niveau.getValue().isEmpty()) {
+           
+        
            Langue l=new Langue();
         l.setLangue(langue.getText());
         l.setNiveau(niveau.getValue());
@@ -84,25 +81,19 @@ public class LangueController implements Initializable {
         
            
           ls.ajouterLangue(l);
-           
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Langue.fxml"));
-            try {
-                Pane pane = (Pane) loader.load();
-                stage.setTitle("Langue");
-                Scene scene = new Scene(pane);
-                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-                stage.centerOnScreen();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(formulaireController.class.getName()).log(Level.SEVERE, null, ex);}
-//            }
+            ((Node)(event.getSource())).getScene().getWindow().hide(); 
+           }else{
+                System.out.println("remplir tous les champs!");
+           }
+       
         
     }
 
     @FXML
     private void AnnulerLangue(ActionEvent event) {
+          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
     
 }

@@ -19,6 +19,7 @@ public class Portfolio extends Freelancer{
     private String adresse;
  
     private String parler;
+    private String github,linkedin;
 
     public Portfolio(int id, int id_user,String titre, String adresse, String parler) {
         this.id = id;
@@ -41,6 +42,22 @@ public class Portfolio extends Freelancer{
         this.adresse = adresse;
   
         this.parler = parler;
+    }
+
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
     }
     
    

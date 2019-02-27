@@ -6,14 +6,29 @@
 package gui;
 
 import com.jfoenix.controls.JFXButton;
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +36,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,6 +51,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -87,8 +104,6 @@ public class CréeCvController implements Initializable {
     @FXML
     private Label email1;
     @FXML
-    private Label email2;
-    @FXML
     private Label numero;
     @FXML
     private Label adresse;
@@ -108,6 +123,16 @@ public class CréeCvController implements Initializable {
     private ListView listeprojet;
     @FXML
     private AnchorPane plus;
+    @FXML
+    private Label linkedin;
+    @FXML
+    private Label gitub;
+    @FXML
+    private JFXButton retour;
+    @FXML
+    private JFXButton update;
+    @FXML
+    private JFXButton pdf;
     /**
      * Initializes the controller class.
      */
@@ -121,7 +146,7 @@ public class CréeCvController implements Initializable {
 //        ImageView imageView = new ImageView(image);
 //           add = new Button("Home", imageView);
        
-        
+        test.Test.link="/gui/ProfilUser.fxml";
 
      
        
@@ -131,11 +156,13 @@ public class CréeCvController implements Initializable {
        Freelancer user=ps.selectFreelancer();
        nom.setText(user.getPrenom()+" "+user.getNom());
        
-       position.setText(user.getPoste());
+       position.setText(user.getSpecialite());
        email1.setText(user.getMail());
        numero.setText(user.getTel()+"");
        adresse.setText(p.getAdresse());
        description.setText(p.getParler());
+       linkedin.setText(p.getLinkedin());
+       gitub.setText(p.getGithub());
         Image image=new Image("http://localhost"+p.getImage());
        imgaffiche.setImage(image);
        ExperienceService es = new ExperienceService();
@@ -657,6 +684,7 @@ public class CréeCvController implements Initializable {
                 
                            }
                     });
+                
                             t.setStyle("-fx-font-size: 25 arial;");
                             VBox vBox = new VBox(t);
                             vBox.setSpacing(4);
@@ -849,5 +877,86 @@ public class CréeCvController implements Initializable {
                 Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
-    
+
+    @FXML
+    private void Retour(ActionEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
+    }
+
+    @FXML
+    private void update(ActionEvent event) {
+                  Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CreeCv.fxml"));
+            try {
+                Pane pane = (Pane) loader.load();
+                stage.setTitle("Modifier Experience");
+                Scene scene = new Scene(pane);
+                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                stage.centerOnScreen();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+
+    @FXML
+    private void Pdf(ActionEvent event) throws FileNotFoundException, DocumentException {
+            Window owner = btn_apropos.getScene().getWindow();
+            
+            Node node = btn_apropos.getScene().getFocusOwner();
+            PrinterJob job = PrinterJob.createPrinterJob();
+            if(job != null){
+                job.showPrintDialog(owner); // Window must be your main Stage
+                job.printPage(node);
+                
+                job.endJob();
+            
+//         Document document = new Document();
+//      try
+//      {
+//
+//
+//PdfWriter.getInstance(document, new FileOutputStream("iTextTable.pdf"));
+// 
+//document.open();
+ 
+//PdfPTable table = new PdfPTable(3);
+//addTableHeader(table);
+//addRows(table);
+//addCustomRows(table);
+// 
+//document.add(table);
+//document.close();
+
+
+//
+//    private void addTableHeader(PdfPTable table) {
+//          Stream.of("column header 1", "column header 2", "column header 3")
+//      .forEach(columnTitle -> {
+//        PdfPCell header = new PdfPCell();
+//       
+//        header.setBorderWidth(2);
+//        header.setPhrase(new Phrase(columnTitle));
+//        table.addCell(header);
+//    });
+//    }
+
+   
+
+//
+//    private void addRows(PdfPTable table) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    table.addCell("row 1, col 1");
+//    table.addCell("row 1, col 2");
+//    table.addCell("row 1, col 3");
+//    
+//    }catch(Exceprtion e){
+//    
+       
+
+            }}
 }

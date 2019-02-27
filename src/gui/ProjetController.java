@@ -16,6 +16,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 import modals.Projet;
 import service.ProjetService;
 
@@ -109,6 +111,7 @@ public class ProjetController implements Initializable {
     @FXML
     private void EnregistrerProjet(ActionEvent event) {
            ProjetService ps= new ProjetService();
+     if(!nomprojet.getText().isEmpty()||!url.getText().isEmpty()){
           Projet p= new Projet();
            p.setId_user(1);
            p.setMoisdebut(moisd.getValue());
@@ -118,12 +121,18 @@ public class ProjetController implements Initializable {
            p.setNom_projet(nomprojet.getText());
            p.setUrl(url.getText());
             p.setDescription(description.getText());
-        ps.ajouterProjet(p);
+        ps.ajouterProjet(p);}
+     else{
+         System.out.println("remplir tous les champs");
+     }
            
     }
 
     @FXML
-    private void Annuler(ActionEvent event) {
+    private void Annuler(ActionEvent event) {    
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+        stage.close();
     }
 
     @FXML

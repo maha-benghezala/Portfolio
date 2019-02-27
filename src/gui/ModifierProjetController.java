@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +17,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 import modals.Projet;
 import service.ProjetService;
 
@@ -127,6 +130,7 @@ public class ModifierProjetController implements Initializable {
     private void EnregistrerProjet(ActionEvent event) {
              ProjetService ps= new ProjetService();
           Projet p= ps.get(id);
+       if(!nomprojet.getText().isEmpty()||!url.getText().isEmpty()){
            p.setId_user(1);
            p.setMoisdebut(moisd.getValue());
            p.setMoisfin(moisf.getValue());
@@ -135,11 +139,17 @@ public class ModifierProjetController implements Initializable {
            p.setNom_projet(nomprojet.getText());
            p.setUrl(url.getText());
             p.setDescription(description.getText());
-            ps.modiferprojet(p);
+            ps.modiferprojet(p);}
+      else{
+         System.out.println("remplir tous les champs");
+     }
     }
 
     @FXML
     private void Annuler(ActionEvent event) {
+             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
     
 }

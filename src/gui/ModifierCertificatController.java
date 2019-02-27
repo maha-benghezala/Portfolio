@@ -15,6 +15,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 import modals.Certification;
 import service.CertificationService;
 
@@ -113,10 +115,10 @@ public class ModifierCertificatController implements Initializable {
     @FXML
     private void OnAdd(ActionEvent event) {
         CertificationService cs = new   CertificationService();
-//        if (!NomCertificat.getText().isEmpty()|| !AutoriteCertificat.getText().isEmpty() || !Numerolicence.getText().isEmpty()) {
-//            System.out.println("remplir tous les champs!");}
-//        else
-//        { 
+        if (!NomCertificat.getText().isEmpty()|| !organisme.getText().isEmpty() || !Numerolicence.getText().isEmpty()) {
+            if(Integer.parseInt(Anneefin.getValue())>Integer.parseInt(Anneedebut.getValue()))
+            {
+
             
            Certification ce=cs.get(id);
            
@@ -131,10 +133,24 @@ public class ModifierCertificatController implements Initializable {
          ce.setUrl(url.getText());
          ce.setId_user(1);
          cs.modiferCertification(ce);
+          ((Node)(event.getSource())).getScene().getWindow().hide();
+
+        }else
+            { 
+            System.out.println("remplir tous les champs!");
+            }
+        }
+       else{
+            System.out.println("remplir tous les champs!");
+        }
     }
+   
 
     @FXML
     private void Annuler(ActionEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
 
     @FXML

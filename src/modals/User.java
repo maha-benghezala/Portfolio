@@ -15,7 +15,7 @@ public class User {
      private String mot_de_passe;
      private String adresse;
      private String mail,ville;
-     private double tel;
+     private int tel;
      private String nomSc;
      private String role;
      private String image;
@@ -92,7 +92,7 @@ public class User {
     
 
     
-    public User(int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, double tel) {
+    public User(int id, String nom_utilisateur, String mot_de_passe, String adresse, String mail, int tel) {
         this.id = id;
         this.nom_utilisateur = nom_utilisateur;
         this.mot_de_passe = mot_de_passe;
@@ -117,9 +117,6 @@ public class User {
         this.mail = mail;
     }
 
-    public void setTel(double tel) {
-        this.tel = tel;
-    }
 
     public int getId() {
         return id;
@@ -149,8 +146,12 @@ public class User {
         return mail;
     }
 
-    public double getTel() {
+    public int getTel() {
         return tel;
+    }
+
+    public void setTel(int tel) {
+        this.tel = tel;
     }
      
     

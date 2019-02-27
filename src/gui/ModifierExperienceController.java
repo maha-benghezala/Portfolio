@@ -16,6 +16,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 import modals.Experience;
 import service.ExperienceService;
 
@@ -172,6 +174,9 @@ public class ModifierExperienceController implements Initializable {
 
     @FXML
     private void Annuler(ActionEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // do what you have to do
+    stage.close();
     }
     
 }
