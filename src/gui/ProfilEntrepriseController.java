@@ -67,7 +67,7 @@ public class ProfilEntrepriseController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         PortfolioEntrpriseService ce=new PortfolioEntrpriseService();
-        User e=ce.getById(3);
+        User e=ce.getById(4);
          System.out.println(e.toString());
          NomEntreprise.setText(e.getNomSc());
          TitreEntrprise.setText(e.getSpecialite());
@@ -87,7 +87,7 @@ public class ProfilEntrepriseController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ProfilEntreprise.fxml"));
             try {
                 Pane pane = (Pane) loader.load();
-                stage.setTitle("Crée Cv");
+                stage.setTitle("Mon Profil");
                 Scene scene = new Scene(pane);
                 scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
                 stage.centerOnScreen();
@@ -104,7 +104,7 @@ public class ProfilEntrepriseController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/listeFreelancer.fxml"));
             try {
                 Pane pane = (Pane) loader.load();
-                stage.setTitle("Crée Cv");
+                stage.setTitle("Liste Entreprise");
                 Scene scene = new Scene(pane);
                 scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
                 stage.centerOnScreen();
@@ -117,6 +117,7 @@ public class ProfilEntrepriseController implements Initializable {
 
     @FXML
     private void Rate(ActionEvent event) {
+        
     }
 
     @FXML

@@ -13,11 +13,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modals.Certification;
 import modals.Freelancer;
 import modals.Portfolio;
 import modals.User;
 
-import profprop.Portf;
+
 import utlis.MyConnection;
 
 /**
@@ -32,10 +33,11 @@ public class PortfolioService {
     public void ajouterPortfolio(Portfolio p) {
         try {
             Statement st = C.createStatement();
-            String req = "INSERT INTO `portfolio`(`id`, `id-user`, `image`, `titre`, `adresse`, `parler`, `github`, `likedin`)  VALUES("+ p.getId_user() +",'" +p.getImage() +"','" +p.getTitre() +"','" +p.getAdresse() +"','"+p.getParler()+"','"+p.getGithub()+"','"+p.getLinkedin()+"')";
+            String req = "INSERT INTO `portfolio`(`id-user`, `image`, `titre`, `adresse`, `parler`, `github`, `likedin`)  VALUES("+ p.getId_user() +",'" +p.getImage() +"','" +p.getTitre() +"','" +p.getAdresse() +"','"+p.getParler()+"','"+p.getGithub()+"','"+p.getLinkedin()+"')";
          /** String req = "INSERT INTO `portfolio`( `id-user`, `specialite`, `nom`, `prenom`, `poste_actuel`, `adresse`, `tel`, `parler`) VALUES" + p.getId_user() + ",'" 
                     +p.getSpecialite() +"','" +p.getNom() +"','" +p.getPrenom() +"','" +p.getPoste_actuel() +"','" +p.getAdresse() +"'," 
                     +p.getTel() +",'"+p.getParler()+"')";**/
+            System.out.println("ajoutée");
             st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(PortfolioService.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,7 +86,7 @@ public class PortfolioService {
     public  void SupprimerPortfolio(int id)
     {
         try {
-            PreparedStatement pt = C.prepareStatement("delete  from `portfolio` where id =?");
+            PreparedStatement pt = C.prepareStatement("delete  from `portfolio` where `id` =?");
             pt.setInt(1,id);
             pt.executeUpdate();
         } catch (SQLException ex) {
@@ -119,7 +121,7 @@ public class PortfolioService {
     public Portfolio getByIdUser(int id) {
         Portfolio a = new Portfolio();
             try {
-                String req = "SELECT * FROM `portfolio` WHERE `id-user` = ?  ";
+                String req = "SELECT * FROM `portfolio` WHERE `id-user` = ? ";
                 PreparedStatement ste = C.prepareStatement(req);
                 ste.setInt(1, id);
                ResultSet rs = ste.executeQuery();
@@ -129,8 +131,8 @@ public class PortfolioService {
                      
                      a.setTitre(rs.getString("titre"));
                     a.setAdresse(rs.getString("adresse"));
-                   
-                   
+                    a.setImage(rs.getString("image"));
+               
                     a.setParler(rs.getString("parler"));
                     a.setGithub(rs.getString("github"));
                     a.setLinkedin(rs.getString("likedin"));
@@ -265,4 +267,17 @@ public void updateDisonibilite(Freelancer p)
     return E;
     
 }
+    public  void SupprimerCertification(int id)
+    {
+        Certification c=new Certification();
+        try {
+             Statement st = C.createStatement();
+             String req="delete  from `certification` where `iduser` =2";
+           
+           st.executeUpdate(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(CertificationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }

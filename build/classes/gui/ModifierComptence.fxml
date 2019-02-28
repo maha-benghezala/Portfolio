@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierCompetenceController">
+<AnchorPane id="pane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierCompetenceController">
      <children>
       <JFXTextField fx:id="competencetxt" layoutX="27.0" layoutY="72.0" onAction="#OnAddCompetence" prefHeight="37.0" prefWidth="534.0" promptText="Compétence " />
       <JFXButton fx:id="AjouterCompetence" layoutX="310.0" layoutY="303.0" onAction="#OnAddCompetence" prefHeight="37.0" prefWidth="245.0" text="Ajouter">

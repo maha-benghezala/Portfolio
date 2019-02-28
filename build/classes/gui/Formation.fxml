@@ -9,20 +9,32 @@
 
 <AnchorPane id="pane" prefHeight="600.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FormationController">
    <children>
-      <JFXComboBox fx:id="anneedebut" layoutX="26.0" layoutY="242.0" prefHeight="39.0" prefWidth="549.0" promptText="Date" />
-      <JFXButton id="btn" fx:id="enreg" layoutX="347.0" layoutY="502.0" onAction="#EnregistrerFormation" prefHeight="39.0" prefWidth="223.0" styleClass="btn-primary" stylesheets="@fxml1.css" text="Enregistrer">
+      <JFXComboBox fx:id="anneedebut" focusColor="#37383c" layoutX="26.0" layoutY="242.0" prefHeight="39.0" prefWidth="549.0" promptText="Date" />
+      <JFXButton id="btn" fx:id="enreg" layoutX="347.0" layoutY="502.0" onAction="#EnregistrerFormation" prefHeight="39.0" prefWidth="223.0" styleClass="btn-primary" text="Enregistrer">
          <font>
-            <Font name="Times New Roman Bold" size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
       <JFXButton fx:id="annuler" layoutX="37.0" layoutY="502.0" onAction="#Annuler" prefHeight="39.0" prefWidth="223.0" stylesheets="@fxml1.css" text="Annuler">
          <font>
-            <Font name="Times New Roman Bold" size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="Nomecole" layoutX="28.0" layoutY="38.0" prefHeight="39.0" prefWidth="549.0" promptText="École " />
-      <JFXTextField fx:id="diplome" layoutX="28.0" layoutY="104.0" prefHeight="39.0" prefWidth="549.0" promptText="Diplôme" />
-      <JFXTextField fx:id="domaine" layoutX="28.0" layoutY="166.0" prefHeight="39.0" prefWidth="549.0" promptText="Domaine d’études" />
-      <JFXTextArea fx:id="description" layoutX="28.0" layoutY="322.0" prefHeight="160.0" prefWidth="549.0" promptText="Description" />
+      <JFXTextField fx:id="Nomecole" focusColor="#37383c" layoutX="28.0" layoutY="38.0" prefHeight="39.0" prefWidth="549.0" promptText="École ">
+         <font>
+            <Font size="13.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="diplome" focusColor="#37383c" layoutX="28.0" layoutY="104.0" prefHeight="39.0" prefWidth="549.0" promptText="Diplôme">
+         <font>
+            <Font size="13.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="domaine" focusColor="#37383c" layoutX="28.0" layoutY="166.0" prefHeight="39.0" prefWidth="549.0" promptText="Domaine d’études">
+         <font>
+            <Font size="13.0" />
+         </font></JFXTextField>
+      <JFXTextArea fx:id="description" focusColor="#37383c" layoutX="28.0" layoutY="322.0" prefHeight="160.0" prefWidth="549.0" promptText="Description">
+         <font>
+            <Font size="13.0" />
+         </font></JFXTextArea>
    </children>
 </AnchorPane>

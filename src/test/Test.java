@@ -33,10 +33,11 @@ public class Test extends Application{
            
             Parent root ;
             
-                root = FXMLLoader.load(getClass().getResource("/gui/ProfilEntreprise.fxml"));
-            
+                root = FXMLLoader.load(getClass().getResource("/gui/ProfilUser.fxml"));
+//                   root = FXMLLoader.load(getClass().getResource("/gui/ProfilEntreprise.fxml"));
+//                        
            
-            stage.setTitle("Cree CV");
+            stage.setTitle("Mon Profil");
             Scene scene = new Scene(root);
             scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
             stage.centerOnScreen();

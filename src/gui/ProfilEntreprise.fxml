@@ -12,13 +12,25 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfilEntrepriseController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="201.0">
+      <VBox prefHeight="500.0" prefWidth="208.0" style="-fx-background-color: #333645;">
          <children>
-            <ImageView fx:id="imge" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton fx:id="profil" onAction="#Profil" prefHeight="50.0" prefWidth="208.0" text=" Profil" />
-            <JFXButton fx:id="liste" layoutX="10.0" layoutY="160.0" onAction="#listeFeelancer" prefHeight="50.0" prefWidth="200.0" text="Liste des Freelancers" />
-            <JFXButton fx:id="rate" layoutX="10.0" layoutY="210.0" onAction="#Rate" prefHeight="50.0" prefWidth="200.0" text="Rate" />
-            <JFXButton fx:id="deconnection" layoutX="10.0" layoutY="260.0" onAction="#Deconnection" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
+            <ImageView fx:id="imge" fitHeight="150.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="profil" onAction="#Profil" prefHeight="50.0" prefWidth="208.0" text=" Profil" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="liste" layoutX="10.0" layoutY="160.0" onAction="#listeFeelancer" prefHeight="50.0" prefWidth="200.0" text="Liste des Freelancers" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="rate" layoutX="10.0" layoutY="210.0" onAction="#Rate" prefHeight="50.0" prefWidth="200.0" text="Rate" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="deconnection" layoutX="10.0" layoutY="260.0" onAction="#Deconnection" prefHeight="50.0" prefWidth="200.0" text="Déconnexion" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
          </children>
       </VBox>
       <Line endX="-109.0" endY="404.29290771484375" layoutX="320.0" layoutY="97.0" startX="-109.0" startY="-97.0" />

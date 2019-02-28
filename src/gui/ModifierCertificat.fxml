@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierCertificatController">
+<AnchorPane id="pane" prefHeight="500.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierCertificatController">
      <children>
       <JFXTextField fx:id="NomCertificat" layoutX="22.0" layoutY="38.0" prefHeight="35.0" prefWidth="566.0" promptText="Nom Certificat" />
       <JFXTextField fx:id="organisme" layoutX="22.0" layoutY="105.0" prefHeight="35.0" prefWidth="566.0" promptText="Organisme de délivrance" />
@@ -22,7 +22,7 @@
             <Font name="Times New Roman Bold" size="13.0" />
          </font>
       </JFXCheckBox>
-      <JFXButton fx:id="Enregistrer" layoutX="379.0" layoutY="399.0" onAction="#OnAdd" prefHeight="35.0" prefWidth="204.0" text="Enregistrer">
+      <JFXButton fx:id="Enregistrer" layoutX="363.0" layoutY="399.0" onAction="#OnAdd" prefHeight="35.0" prefWidth="204.0" text="Enregistrer">
          <font>
             <Font name="Times New Roman Bold" size="13.0" />
          </font>

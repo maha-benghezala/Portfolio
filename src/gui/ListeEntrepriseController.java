@@ -36,8 +36,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import modals.Entreprise;
 import modals.Freelancer;
+import modals.User;
 import service.PortfolioEntrpriseService;
 import service.PortfolioService;
+import service.RateService;
 
 /**
  * FXML Controller class
@@ -77,6 +79,7 @@ public class ListeEntrepriseController implements Initializable {
     private JFXButton telechergercv;
     @FXML
     private JFXButton deconnection;
+    
 
     /**
      * Initializes the controller class.
@@ -84,7 +87,8 @@ public class ListeEntrepriseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-  
+        RateService rs = new RateService();
+                           pane.setVisible(false);
                            NomSc.setVisible(false);
                            adresse.setVisible(false);
                            ville.setVisible(false);
@@ -93,11 +97,15 @@ public class ListeEntrepriseController implements Initializable {
                            tel.setVisible(false);
                            contact.setVisible(false);
                            description.setDisable(true);
+        PortfolioService p=new PortfolioService();
+        User u=p.getByIdUser(1);
            PortfolioEntrpriseService es = new PortfolioEntrpriseService();
        ArrayList<Entreprise> e= new ArrayList<>();
        e = es.selectEntreprise();
+       
         System.out.println(e);
- 
+      Image image=new Image("http://127.0.0.1"+u.getImage());
+       img.setImage(image);
         ObservableList<Entreprise> observableList = FXCollections.observableArrayList(e);
         listeEntreprise.setItems(observableList);
       
@@ -117,14 +125,35 @@ public class ListeEntrepriseController implements Initializable {
                             Text t2=new Text(item.getAdresse());
                             Text t3= new Text(item.getTel()+"");
                             Text t4=new Text(item.getVille());
+                            Text t5 = new Text("Note : "+rs.count(4));
+                            JFXButton avis = new JFXButton("Donner un avis");
                          //   Text t5=new Text(item.getDescription());
                             JFXButton voir = new JFXButton("Voir plus");
                             t.setStyle("-fx-font-size: 20 arial;");
+                            avis.setOnAction(new EventHandler<ActionEvent>() {
+                                @Override
+                                public void handle(ActionEvent event) {
+                                    RateController.id = item.getId();
+                                                               Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Rate.fxml"));
+            try {
+                Pane pane = (Pane) loader.load();
+                stage.setTitle("Ajouter Langue");
+                Scene scene = new Scene(pane);
+                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                stage.centerOnScreen();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                                }
+                            });
                             voir.setOnAction(new EventHandler<ActionEvent>(){
                                 @Override
                                 public void handle(ActionEvent event) {
                                   
-                                 
+                           pane.setVisible(true);
                            NomSc.setVisible(true);
                            adresse.setVisible(true);
                            ville.setVisible(true);
@@ -143,10 +172,10 @@ public class ListeEntrepriseController implements Initializable {
                             });
                         
                            
-                            VBox vBox = new VBox(t,t1,t2,t3,t4);
+                            VBox vBox = new VBox(t,t1,t2,t3,t4,t5);
                             vBox.setSpacing(4);
                       
-                            HBox hBox = new HBox(vBox,voir);
+                            HBox hBox = new HBox(vBox,voir,avis);
                             hBox.setSpacing(10);
                  
                             setGraphic(hBox);
@@ -206,7 +235,7 @@ public class ListeEntrepriseController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CreeCv.fxml"));
             try {
                 Pane pane = (Pane) loader.load();
-                stage.setTitle("Profil");
+                stage.setTitle("CV");
                 Scene scene = new Scene(pane);
                 scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
                 stage.centerOnScreen();
@@ -223,7 +252,7 @@ public class ListeEntrepriseController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListeEntreprise.fxml"));
             try {
                 Pane pane = (Pane) loader.load();
-                stage.setTitle("Profil");
+                stage.setTitle("Liste des Entreprises");
                 Scene scene = new Scene(pane);
                 scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
                 stage.centerOnScreen();
@@ -236,6 +265,19 @@ public class ListeEntrepriseController implements Initializable {
 
     @FXML
     private void TélechargerCv(ActionEvent event) {
+                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/TelechargerPdf.fxml"));
+            try {
+                Pane pane = (Pane) loader.load();
+                stage.setTitle("Télécharger CV");
+                Scene scene = new Scene(pane);
+                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                stage.centerOnScreen();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     @FXML

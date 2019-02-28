@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="pane" prefHeight="400.0" prefWidth="500.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RateController">
+   <children>
+      <Rating fx:id="rate" layoutX="150.0" layoutY="66.0" />
+      <JFXTextArea fx:id="commentaire" layoutX="18.0" layoutY="137.0" prefHeight="150.0" prefWidth="464.0" />
+      <JFXButton fx:id="ajout" layoutX="293.0" layoutY="337.0" onAction="#AjouterRate" prefHeight="25.0" prefWidth="176.0" text="Ajouter ">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="annuler" layoutX="33.0" layoutY="337.0" onAction="#AnnulerRate" prefHeight="30.0" prefWidth="176.0" text="Annuler">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></JFXButton>
+   </children>
+</AnchorPane>

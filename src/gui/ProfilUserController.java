@@ -9,11 +9,11 @@ package gui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXToggleButton;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import static com.lowagie.text.pdf.BidiOrder.PDF;
-import static com.lowagie.text.pdf.PdfName.PDF;
-import com.lowagie.text.pdf.PdfWriter;
+//import com.lowagie.text.Document;
+//import com.lowagie.text.DocumentException;
+//import static com.lowagie.text.pdf.BidiOrder.PDF;
+//import static com.lowagie.text.pdf.PdfName.PDF;
+//import com.lowagie.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -96,7 +96,8 @@ public class ProfilUserController implements Initializable {
        nom.setText(user.getPrenom()+" "+user.getNom());
        
        adresse.setText(p.getAdresse());
-       Image image=new Image("http://127.0.0.1"+p.getImage());
+       
+       Image image=new Image("http://localhost:88/image/Identity.jpg");
        img.setImage(image);
        titre.setText(p.getTitre());
        description.setText(p.getParler());
@@ -177,40 +178,44 @@ public class ProfilUserController implements Initializable {
     }
 
     @FXML
-    private void TélechargerCv(ActionEvent event) throws FileNotFoundException {
+    private void TélechargerCv(ActionEvent event)  {
        
-       
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             
-            try {
-            menudeco.openPdfFile("c:/cv.pdf");
-            decodePage();
-            System.out.println(menudeco.getNumberOfPages());
-            
-            
+          
     
-        } catch (PdfException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-        
+
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/TelechargerPdf.fxml"));
+            try {
+                Pane pane = (Pane) loader.load();
+                stage.setTitle("Profil");
+                Scene scene = new Scene(pane);
+                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                stage.centerOnScreen();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CréeCvController.class.getName()).log(Level.SEVERE, null, ex);
+            }    
+//          
        }
        
    
- private void decodePage() {
-
-    try {
-        menudeco.setPageDisplayMode(1);
-        menudeco.setPageParameters(1.0f, 1);
-        menudeco.decodePage(1);
-        menudeco.setPageParameters(1.2f, 1);
-        menudeco.decodePage(1);
-        menudeco.waitForDecodingToFinish();
-       
-    } catch (final Exception e) {
-        e.printStackTrace();
-        System.out.println(e.getMessage());
-    }
-}
+// private void decodePage() {
+//
+//    try {
+//        menudeco.setPageDisplayMode(1);
+//        menudeco.setPageParameters(1.0f, 1);
+//        menudeco.decodePage(1);
+//        menudeco.setPageParameters(1.2f, 1);
+//        menudeco.decodePage(1);
+//        menudeco.waitForDecodingToFinish();
+//       
+//    } catch (final Exception e) {
+//        e.printStackTrace();
+//        System.out.println(e.getMessage());
+//    }
+//}
     @FXML
     private void Deconnection(ActionEvent event) {
     }

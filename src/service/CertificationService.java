@@ -80,10 +80,12 @@ public class CertificationService {
     
     public  void SupprimerCertification(int id)
     {
+        Certification c=new Certification();
         try {
-            PreparedStatement pt = C.prepareStatement("delete  from `certification` where id =?");
-            pt.setInt(1,id);
-            pt.executeUpdate();
+             Statement st = C.createStatement();
+           String req="delete  from `certification` where `id` ="+id;
+           
+           st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(CertificationService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -142,4 +144,5 @@ public class CertificationService {
         
         return a;
     }
+ 
 }

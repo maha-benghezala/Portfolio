@@ -22,11 +22,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -34,8 +37,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 import modals.Certification;
 import modals.Experience;
+import org.controlsfx.control.Notifications;
 import service.CertificationService;
 import service.ExperienceService;
 
@@ -150,7 +155,7 @@ public class ExperienceController implements Initializable {
     @FXML
     private void Enregistrer(ActionEvent event) {
            ExperienceService es = new  ExperienceService();
-        if (!Nomentreprise.getText().isEmpty() || !intitule.getText().isEmpty()|| lieu.getText().isEmpty() || !secteur.getValue().isEmpty()) {
+        if (!Nomentreprise.getText().equals("") || !intitule.getText().equals("")|| lieu.getText().equals("") || !secteur.getValue().equals("")) {
            
            if(Integer.parseInt(anneef.getValue())> Integer.parseInt(anneed.getValue()))
            {
@@ -170,13 +175,37 @@ public class ExperienceController implements Initializable {
              e.setAnnée_fin(anneef.getValue());
         e.setSecteur(secteur.getValue());
          es.ajouterExperience(e);
-      ((Node)(event.getSource())).getScene().getWindow().hide();
+             Notifications notificationBuilder;
+            notificationBuilder = Notifications.create()
+                    .title("Done")
+                    .text("Ajouter avec succés")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .onAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("you clicked me");
+                        }
+                    });
+        notificationBuilder.show();
+//      ((Node)(event.getSource())).getScene().getWindow().hide();
 
            }else{
-                System.out.println("verfier votre date");
+              Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Dialog");
+       
+        alert.setContentText("Verifier Votre date!");
+
+        alert.showAndWait();
                 }
          }  else{
-            System.out.println("remplir tous les champs!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Dialog");
+       
+        alert.setContentText("remplir tous les champs!");
+
+        alert.showAndWait();
                 }
         
   }

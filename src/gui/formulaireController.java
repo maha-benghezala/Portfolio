@@ -26,9 +26,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 //import javafx.scene.control.Alert;
 //import javafx.scene.control.Alert.AlertType;
 
@@ -44,9 +46,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 import modals.Freelancer;
 import modals.Portfolio;
 import modals.User;
+import org.controlsfx.control.Notifications;
 
 import service.PortfolioService;
 import test.Test;
@@ -84,15 +88,14 @@ public class formulaireController implements Initializable {
     @FXML
     private TextField titre;
       private File file;
-    @FXML
     private JFXButton add;
-    @FXML
-    private JFXButton sup;
  public static int id;
     @FXML
     private JFXTextField likedin;
     @FXML
     private JFXTextField github;
+    @FXML
+    private JFXButton annuler;
 
     /**
      * Initializes the controller class.
@@ -124,85 +127,118 @@ public class formulaireController implements Initializable {
 //        System.out.println(t1.getText()+"et"+t2.getText());
 //    }
  
-
     @FXML
     private void OnAdd(ActionEvent event) throws IOException {
- 
      PortfolioService ps = new PortfolioService();
        Portfolio p=ps.getByIdUser(1);
            
-            if(p ==null)
+            if(p.getId() ==0)
         {
-            if(!adresse.getText().isEmpty() && !titre.getText().isEmpty() &&!description.getText().isEmpty())
+
+            if(!adresse.getText().equals("") && !titre.getText().equals("") && !description.getText().equals(""))
             {
-              if((tel+"").length()==8)
+              if((tel.getText()).length()==8)
               {
-                  
-             
-        
-       adresse.setText(p.getAdresse());
-       Image image=new Image("http://localhost"+p.getImage());
-       img.setImage(image);
-       titre.setText(p.getTitre());
-       description.setText(p.getParler());
-       github.setText(p.getGithub());
-       likedin.setText(p.getLinkedin());
-            ps.ajouterPortfolio(p);
-              ((Node)(event.getSource())).getScene().getWindow().hide(); 
-              }
-            else{
-                System.out.println("Verifier votre numero!");
-            }
-      }else{
-                  System.out.println("remplir tous les champs!");   
-      }
-                   
-    }else{
-      
-        System.out.println(p.toString());
+                                                      System.out.println("hello");
+
+        p.setId_user(1);
         p.setParler(description.getText());
         p.setTitre(titre.getText());
         p.setAdresse(adresse.getText());
         p.setImage(btn.getText());
         p.setGithub(github.getText());
         p.setLinkedin(likedin.getText());
-    
-             ps.modiferPortfolio(p);
-               ((Node)(event.getSource())).getScene().getWindow().hide(); 
-             //Window owner = titre.getScene().getWindow();
-                
-//              Alert alert = new Alert(AlertType.INFORMATION);
-//alert.setTitle("Information Dialog");
-//alert.setHeaderText("Look, an Information Dialog");
-//alert.setContentText("I have a great message for you!");
-//
-//alert.showAndWait();
-            }
-   add.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                     public void handle(ActionEvent arg0) {
-                  
-                  Stage stage = (Stage) ((Node) arg0.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CreeCv.fxml"));
-            try {
-                Pane pane = (Pane) loader.load();
-                stage.setTitle("Supprimer");
-                Scene scene = new Scene(pane);
-                scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-                stage.centerOnScreen();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(formulaireController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
-                           }
+                  System.out.println("here");
+       Image image=new Image("http://localhost"+p.getImage());
+            ps.ajouterPortfolio(p);
+            
+            Notifications notificationBuilder;
+            notificationBuilder = Notifications.create()
+                    .title("Done")
+                    .text("Ajouter avec succés")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .onAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("you clicked me");
+                        }
                     });
-           ((Node)(event.getSource())).getScene().getWindow().hide();
+        notificationBuilder.show();
+                      ((Node)(event.getSource())).getScene().getWindow().hide(); 
+       }
+            
+            else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dialog");
+       
+        alert.setContentText("Longeur de numero doit être 8 !");
+
+        alert.showAndWait();
+            }
+      }else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dialog");
+       
+        alert.setContentText("remplir tous les champs!");
+
+        alert.showAndWait();   
+      }
+                   
+    }else{
+      
+        System.out.println(p.toString());
+         if(!adresse.getText().equals("") && !titre.getText().equals("") &&!description.getText().equals(""))
+            {
+              if(tel.getText().length()==8)
+              {
+        p.setParler(description.getText());
+        p.setTitre(titre.getText());
+        p.setAdresse(adresse.getText());
+        p.setImage(btn.getText());
+        p.setGithub(github.getText());
+        p.setLinkedin(likedin.getText());
+                      System.out.println("here");
+
+             ps.modiferPortfolio(p);
+             
+          Notifications notificationBuilder;
+            notificationBuilder = Notifications.create()
+                    .title("Done")
+                    .text("Ajouter avec succés")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .onAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("you clicked me");
+                        }
+                    });
+        notificationBuilder.show();
+               ((Node)(event.getSource())).getScene().getWindow().hide(); 
+              }else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dialog");
+       
+        alert.setContentText("Longeur de numero doit être 8 !");
+
+        alert.showAndWait();
+            }
+      }else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dialog");
+       
+        alert.setContentText("remplir tous les champs!");
+
+        
+            }
+       
+           //((Node)(event.getSource())).getScene().getWindow().hide();
          
         }
-        
+    }
         
 
    
@@ -224,7 +260,6 @@ public class formulaireController implements Initializable {
         } 
     }
 
-    @FXML
     private void Annuler(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     // do what you have to do

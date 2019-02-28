@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProjetController">
+<AnchorPane id="pane" prefHeight="600.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProjetController">
    <children>
       <JFXTextField fx:id="nomprojet" layoutX="21.0" layoutY="43.0" prefHeight="36.0" prefWidth="559.0" promptText="Nom projet" />
       <JFXTextField fx:id="url" layoutX="21.0" layoutY="356.0" prefHeight="36.0" prefWidth="559.0" promptText="URL du projet" />

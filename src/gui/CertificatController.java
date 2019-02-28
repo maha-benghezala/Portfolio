@@ -154,9 +154,9 @@ public class CertificatController implements Initializable {
     @FXML
     private void OnAdd(ActionEvent event) {
              CertificationService cs = new   CertificationService();
-        if (!NomCertificat.getText().isEmpty()|| !organisme.getText().isEmpty() || !Numerolicence.getText().isEmpty()) {
+        if (!NomCertificat.getText().equals("")|| !organisme.getText().equals("") || !Numerolicence.getText().equals("")) {
             
-          if(Integer.parseInt(Anneefin.getValue()) < Integer.parseInt(Anneedebut.getValue()))
+          if(Integer.parseInt(Anneefin.getValue()) > Integer.parseInt(Anneedebut.getValue()))
           {
             Certification ce=new Certification();
            ce.setId_user(1);
@@ -171,22 +171,42 @@ public class CertificatController implements Initializable {
          ce.setUrl(url.getText());
 
           cs.ajouterCertification(ce);
-         ((Node)(event.getSource())).getScene().getWindow().hide();
+         
+           Notifications notificationBuilder;
+            notificationBuilder = Notifications.create()
+                    .title("Done")
+                    .text("Ajouter avec succés")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .onAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("you clicked me");
+                        }
+                    });
+        notificationBuilder.show();
+//         ((Node)(event.getSource())).getScene().getWindow().hide();
           
-//           Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Information Dialog");
-//        alert.setHeaderText("Look, an Information Dialog");
-//        alert.setContentText("I have a great message for you!");
-//
-//        alert.showAndWait();
+//        
         
         }else{
-              System.out.println("verifier votre date"); 
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Dialog");
+       
+        alert.setContentText("Verifier Votre date!");
+
+        alert.showAndWait();
           }
         }
         else{
             
-            System.out.println("Remplir tous les champs!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Dialog");
+       
+        alert.setContentText("remplir tous les champs!");
+
+        alert.showAndWait();
             
         }
         

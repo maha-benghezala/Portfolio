@@ -19,6 +19,9 @@
 .list-cell {
     -fx-background-color: transparent;
 }
+.list-cell1:inactive {
+    -fx-text-fill: red ;
+}
 .list-view {
     -fx-background-color: rgba(1, 1, 1, .2);
     -fx-background-insets: 0 2 0 0;

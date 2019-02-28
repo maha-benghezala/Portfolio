@@ -81,7 +81,7 @@ public class ExperienceService {
     public  void SupprimerExperience(int id)
     {
         try {
-            PreparedStatement pt = C.prepareStatement("delete  from `experience` where id =?");
+            PreparedStatement pt = C.prepareStatement("delete  from `experience` where `id` =?");
             pt.setInt(1,id);
             pt.executeUpdate();
         } catch (SQLException ex) {

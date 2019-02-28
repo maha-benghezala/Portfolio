@@ -77,28 +77,41 @@ public User selectEntrprise(Entreprise e)
         
     }
     
-    public void modiferContactEntreprise(int id,int iduser)
+    public void modiferContactEntreprise(ContactEntreprise c)
     {
         try {
-            PreparedStatement pt = C.prepareStatement("UPDATE `contact` SET ``tel`=?,`email`=?,`nom`=?,`message`=?,`sujet`=? WHERE `id`=?,`id-user`=?");
-            pt.setInt(6, id);
-            pt.setInt(7, iduser);
-            pt.executeUpdate();
+            Statement st = C.createStatement();
+            String req="UPDATE `contact` SET ``tel`=?,`email`=?,`nom`=?,`message`=?,`sujet`=? WHERE `id`=?,`id-user`=?";
+            
+           ResultSet rs = st.executeQuery(req);
         } catch (SQLException ex) {
             Logger.getLogger(ContactEntrepriseService.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
     
-    public  void SupprimerContactEntreprise(int id)
+    public  void SupprimerContact(int id)
     {
         try {
-            PreparedStatement pt = C.prepareStatement("delete  from `contact` where id =?");
-            pt.setInt(1,id);
-            pt.executeUpdate();
+             Statement st = C.createStatement();
+            String req="DELETE FROM `contact` WHERE `id`=?";
+            
+          st.executeUpdate(req);;
         } catch (SQLException ex) {
             Logger.getLogger(ContactEntrepriseService.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
-}
+    public  void SupprimerContactEntreprise(int id)
+    {
+        try {
+             Statement st = C.createStatement();
+            String req="DELETE FROM `contact` WHERE `id-user`=3";
+            
+       st.executeUpdate(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(ContactEntrepriseService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    }
+

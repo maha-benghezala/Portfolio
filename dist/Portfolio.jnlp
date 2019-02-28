@@ -7,22 +7,35 @@
     <offline-allowed/>
   </information>
   <resources>
-    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
-  </resources>
-  <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Portfolio.jar" size="416828" download="eager" />
-    <jar href="lib/controlsfx-8.40.14.jar" size="1215643" download="eager" />
-    <jar href="lib/itext-1.4.8.jar" size="1891191" download="eager" />
-    <jar href="lib/javax.mail-api-1.4.7.jar" size="189526" download="eager" />
-    <jar href="lib/jfoenix-8.0.8.jar" size="2708772" download="eager" />
-    <jar href="lib/jfoenix-9.0.8.jar" size="2419463" download="eager" />
-    <jar href="lib/jpedal-trial.jar" size="8118579" download="eager" />
-    <jar href="lib/jpedal_gpl.jar" size="2527561" download="eager" />
-    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="827921" download="eager" />
+    <jar href="Portfolio.jar" size="710406" download="eager" />
+    <jar href="lib\client-4.0.1.jar" size="305386" download="eager" />
+    <jar href="lib\commons-codec-1.9.jar" size="263965" download="eager" />
+    <jar href="lib\commons-io-2.5.jar" size="208700" download="eager" />
+    <jar href="lib\commons-lang3-3.5.jar" size="479881" download="eager" />
+    <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib\controlsfx-8.40.14.jar" size="1215643" download="eager" />
+    <jar href="lib\httpclient-4.5.jar" size="727567" download="eager" />
+    <jar href="lib\httpcore-4.4.1.jar" size="322234" download="eager" />
+    <jar href="lib\itextpdf-5.5.9.jar" size="2287148" download="eager" />
+    <jar href="lib\jackson-annotations-2.9.0.jar" size="66519" download="eager" />
+    <jar href="lib\jackson-core-2.9.5.jar" size="321590" download="eager" />
+    <jar href="lib\jackson-databind-2.9.5.jar" size="1342410" download="eager" />
+    <jar href="lib\jackson-dataformat-hal-1.0.4.jar" size="23079" download="eager" />
+    <jar href="lib\jackson-jaxrs-base-2.8.5.jar" size="32607" download="eager" />
+    <jar href="lib\jackson-jaxrs-json-provider-2.8.5.jar" size="15869" download="eager" />
+    <jar href="lib\jackson-module-jaxb-annotations-2.8.5.jar" size="34576" download="eager" />
+    <jar href="lib\java-jwt-2.2.1.jar" size="4930837" download="eager" />
+    <jar href="lib\javax.mail-1.6.1.jar" size="654100" download="eager" />
+    <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
+    <jar href="lib\jfoenix-9.0.8.jar" size="2419463" download="eager" />
+    <jar href="lib\jpedal-trial.jar" size="8118579" download="eager" />
+    <jar href="lib\jpedal_gpl.jar" size="2527561" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\slf4j-api-1.7.21.jar" size="41071" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Portfolio" >
-    <param name="requiredFXVersion" value="2.2+"/>
+    <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="test.Test"  name="Portfolio" />
   <update check="always"/>

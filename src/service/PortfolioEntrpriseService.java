@@ -56,18 +56,10 @@ public class PortfolioEntrpriseService {
     public void modiferPortfolioEntrprise(Entreprise e)
     {
         try {
-            PreparedStatement pt = C.prepareStatement("UPDATE `user` SET `adresse`=?,`mail`=?,`tel`=?,`nomSC`=?,`image`=?,`specialite`=?,`role`=?,`poste`=?,`ville`=? WHERE`iduser`=? ");
-            pt.setString(1,e.getAdresse());
-            pt.setString(2, e.getMail());
-            pt.setDouble(3, e.getTel());
-            pt.setString(4, e.getNom_sc());
-            pt.setString(5, e.getImage());
-            pt.setString(6, e.getSpecialite());
-            pt.setString(7, e.getRole());
-            pt.setString(8,e.getPost());
-            pt.setString(9,e.getVille());
-            pt.setInt(10,e.getId());
-            pt.executeUpdate();
+              Statement st = C.createStatement();
+             String req="UPDATE `user` SET `adresse`=?,`mail`=?,`tel`=?,`nomSC`=?,`image`=?,`specialite`=?,`role`=?,`poste`=?,`ville`=? WHERE`iduser`=? ";
+        
+            st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(PortfolioEntrpriseService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,9 +69,10 @@ public class PortfolioEntrpriseService {
     public  void SupprimerPortfolioEntrprise(int id)
     {
         try {
-            PreparedStatement pt = C.prepareStatement("delete  from `user` where `iduser` =?");
-            pt.setInt(1,id);
-            pt.executeUpdate();
+               Statement st = C.createStatement();
+             String req="DELETE FROM `user` WHERE `iduser`=3";
+           
+           st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(PortfolioEntrpriseService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,7 +85,7 @@ public class PortfolioEntrpriseService {
     
     try {
             Statement st = C.createStatement();
-            String req = "SELECT * FROM `user`WHERE `role`='Entreprise'";
+            String req = "SELECT * FROM `user` WHERE `role`='entreprise'";
             
            
              ResultSet rs = st.executeQuery(req);
@@ -101,8 +94,10 @@ public class PortfolioEntrpriseService {
                user.setNomSc(rs.getString("nomSc"));
                user.setImage(rs.getString("image"));
                 user.setAdresse(rs.getString("adresse"));
+                user.setVille(rs.getString("ville"));
                 user.setDescription(rs.getString("description"));
                 user.setRole(rs.getString("role"));
+                user.setSpecialite(rs.getString("specialite"));
                 user.setTel(rs.getInt("tel"));
            E.add(user);
     }
@@ -122,7 +117,7 @@ public class PortfolioEntrpriseService {
     
     try {
             Statement st = C.createStatement();
-            String req = "SELECT * FROM `user` WHERE  `iduser` =3";
+            String req = "SELECT * FROM `user` WHERE  `iduser` =4";
             
            
              ResultSet rs = st.executeQuery(req);
@@ -149,4 +144,5 @@ public class PortfolioEntrpriseService {
     return user;
     
 }   
+   
 }

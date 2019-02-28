@@ -14,11 +14,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import modals.Projet;
+import org.controlsfx.control.Notifications;
 import service.ProjetService;
 
 /**
@@ -111,7 +116,8 @@ public class ProjetController implements Initializable {
     @FXML
     private void EnregistrerProjet(ActionEvent event) {
            ProjetService ps= new ProjetService();
-     if(!nomprojet.getText().isEmpty()||!url.getText().isEmpty()){
+     if(!nomprojet.getText().equals("")||!url.getText().equals("")){
+         if(Integer.parseInt(anneef.getValue()) > Integer.parseInt(anneed.getValue())){
           Projet p= new Projet();
            p.setId_user(1);
            p.setMoisdebut(moisd.getValue());
@@ -121,9 +127,41 @@ public class ProjetController implements Initializable {
            p.setNom_projet(nomprojet.getText());
            p.setUrl(url.getText());
             p.setDescription(description.getText());
-        ps.ajouterProjet(p);}
+        ps.ajouterProjet(p);
+          Notifications notificationBuilder;
+            notificationBuilder = Notifications.create()
+                    .title("Done")
+                    .text("Ajouter avec succés")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .onAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("you clicked me");
+                        }
+                    });
+        notificationBuilder.show();
+         
+         
+         
+         }
+         else{
+              Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dialog");
+       
+        alert.setContentText("Verifier Votre date!");
+
+        alert.showAndWait();
+         }}
      else{
-         System.out.println("remplir tous les champs");
+               Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dialog");
+       
+        alert.setContentText("remplir tous les champs!");
+
+        alert.showAndWait();
+       
      }
            
     }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierProjetController">
+<AnchorPane id="pane" prefHeight="600.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierProjetController">
     <children>
       <JFXTextField fx:id="nomprojet" layoutX="21.0" layoutY="43.0" prefHeight="36.0" prefWidth="559.0" promptText="Nom projet" />
       <JFXTextField fx:id="url" layoutX="21.0" layoutY="356.0" prefHeight="36.0" prefWidth="559.0" promptText="URL du projet" />
@@ -22,7 +22,7 @@
       <JFXComboBox fx:id="anneed" layoutX="28.0" layoutY="260.0" prefHeight="29.0" prefWidth="234.0" promptText="Année debut" />
       <JFXComboBox fx:id="anneef" layoutX="346.0" layoutY="260.0" prefHeight="29.0" prefWidth="234.0" promptText="Année fin" />
       <JFXTextArea fx:id="description" layoutX="21.0" layoutY="422.0" prefHeight="105.0" prefWidth="559.0" promptText="Description" />
-      <JFXButton fx:id="enregistrer" layoutX="346.0" layoutY="549.0" onAction="#EnregistrerProjet" prefHeight="29.0" prefWidth="234.0" text="Enregistrer">
+      <JFXButton fx:id="enregistrer" layoutX="330.0" layoutY="549.0" onAction="#EnregistrerProjet" prefHeight="29.0" prefWidth="234.0" text="Enregistrer">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>

@@ -14,11 +14,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import modals.Experience;
+import org.controlsfx.control.Notifications;
 import service.ExperienceService;
 
 /**
@@ -61,10 +66,7 @@ public class ModifierExperienceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO   
         ExperienceService es = new  ExperienceService();
-//        if (!Nomentreprise.getText().isEmpty()) {
-//            System.out.println("remplir tous les champs!");}
-//        else
-//        { 
+     
            Experience e=es.get(id);
           e.setId(e.getId());
            e.setId_user(1);
@@ -153,10 +155,10 @@ public class ModifierExperienceController implements Initializable {
     @FXML
     private void Enregistrer(ActionEvent event) {
        ExperienceService es = new  ExperienceService();
-//        if (!Nomentreprise.getText().isEmpty()) {
-//            System.out.println("remplir tous les champs!");}
-//        else
-//        { 
+        if (!Nomentreprise.getText().equals("") || !intitule.getText().equals("")|| lieu.getText().equals("") || !secteur.getValue().equals("")) {
+          if(Integer.parseInt(anneef.getValue())> Integer.parseInt(anneed.getValue()))
+           {
+      
            Experience e=es.get(id);
          
            e.setId_user(1);
@@ -170,7 +172,45 @@ public class ModifierExperienceController implements Initializable {
              e.setAnnée_fin(anneef.getValue());
         e.setSecteur(secteur.getValue());
         es.modiferExperience(e);
-    }
+       
+          Notifications notificationBuilder;
+            notificationBuilder = Notifications.create()
+                    .title("Done")
+                    .text("Ajouter avec succés")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.BOTTOM_RIGHT)
+                    .onAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("you clicked me");
+                        }
+                    });
+        notificationBuilder.show();
+//      ((Node)(event.getSource())).getScene().getWindow().hide();
+
+           }else{
+              Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Dialog");
+       
+        alert.setContentText("Verifier Votre date!");
+
+        alert.showAndWait();
+       
+              }
+        
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Dialog");
+       
+        alert.setContentText("remplir tous les champs!");
+
+        alert.showAndWait();
+                }
+
+    
+        }
+        
 
     @FXML
     private void Annuler(ActionEvent event) {
@@ -178,5 +218,4 @@ public class ModifierExperienceController implements Initializable {
     // do what you have to do
     stage.close();
     }
-    
 }

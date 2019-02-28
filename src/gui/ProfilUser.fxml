@@ -10,19 +10,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import org.jpedal.PdfDecoderFX?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfilUserController">
    <children>
-      <VBox layoutY="1.0" prefHeight="450.0" prefWidth="200.0">
+      <VBox layoutY="1.0" prefHeight="501.0" prefWidth="200.0" style="-fx-background-color: #333645;">
          <children>
-            <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton fx:id="profil" onAction="#MonProfil" prefHeight="50.0" prefWidth="200.0" text="Mon Profil" />
-            <JFXButton fx:id="creecv" onAction="#CreeCv" prefHeight="50.0" prefWidth="200.0" text="Crée Cv" />
-            <JFXButton fx:id="listeentreprise" layoutX="10.0" layoutY="260.0" onAction="#ListeEntreprise" prefHeight="50.0" prefWidth="200.0" text="Liste Entreprise" />
-            <JFXButton fx:id="telechergercv" layoutX="10.0" layoutY="310.0" onAction="#TélechargerCv" prefHeight="50.0" prefWidth="200.0" text="Télecharger Cv" />
-            <JFXButton fx:id="deconnection" layoutX="10.0" layoutY="210.0" onAction="#Deconnection" prefHeight="50.0" prefWidth="200.0" text="Deconnection" />
-            <PdfDecoderFX fx:id="menudeco" />
+            <ImageView fx:id="img" fitHeight="118.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="profil" onAction="#MonProfil" prefHeight="50.0" prefWidth="200.0" text="Mon Profil" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="creecv" onAction="#CreeCv" prefHeight="50.0" prefWidth="200.0" text="Crée Cv" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="listeentreprise" layoutX="10.0" layoutY="260.0" onAction="#ListeEntreprise" prefHeight="50.0" prefWidth="200.0" text="Liste Entreprise" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="telechergercv" layoutX="10.0" layoutY="310.0" onAction="#TélechargerCv" prefHeight="50.0" prefWidth="200.0" text="Télecharger Cv" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="deconnection" layoutX="10.0" layoutY="210.0" onAction="#Deconnection" prefHeight="50.0" prefWidth="200.0" text="Déconnexion" textFill="#f1e9e9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
          </children>
       </VBox>
       <Line endX="-112.0" endY="419.0" layoutX="315.0" layoutY="81.0" startX="-112.0" startY="-81.0" />
